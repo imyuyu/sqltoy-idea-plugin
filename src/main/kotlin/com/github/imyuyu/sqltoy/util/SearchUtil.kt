@@ -1,0 +1,53 @@
+package com.github.imyuyu.sqltoy.util
+
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.roots.ProjectRootManager
+import com.intellij.psi.PsiClass
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiField
+import com.intellij.psi.PsiReferenceList
+import com.intellij.psi.impl.java.stubs.index.JavaShortClassNameIndex
+import com.intellij.psi.search.GlobalSearchScope
+import com.intellij.psi.util.PsiTreeUtil
+
+
+object SearchUtil {
+
+    fun getSearchScope(project: Project?, element: PsiElement): GlobalSearchScope {
+        var searchScope = GlobalSearchScope.projectScope(
+            project!!
+        )
+        val module =
+            ProjectRootManager.getInstance(project).fileIndex.getModuleForFile(element.containingFile.virtualFile)
+        if (module != null) {
+            searchScope = GlobalSearchScope.moduleScope(module)
+        }
+        return searchScope
+    }
+
+    fun getExtendsClassFields(psiClass: PsiClass): List<PsiField> {
+        val psiFields: MutableList<PsiField> = ArrayList()
+        val childrenOfAnyType: List<PsiReferenceList> = ArrayList(
+            PsiTreeUtil.getChildrenOfAnyType(
+                psiClass,
+                PsiReferenceList::class.java
+            )
+        )
+        for (psiReferenceList in childrenOfAnyType) {
+            val referenceElements = psiReferenceList.referenceElements
+            for (referenceElement in referenceElements) {
+                val qualifiedName = referenceElement.qualifiedName
+                val globalSearchScope = GlobalSearchScope.projectScope(psiClass.project)
+                val psiClasses =
+                    JavaShortClassNameIndex.getInstance()[referenceElement.referenceName!!, psiClass.project, globalSearchScope]
+                for (aClass in psiClasses) {
+                    if (aClass.qualifiedName == qualifiedName) {
+                        psiFields.addAll(aClass.fields.toList())
+                        psiFields.addAll(getExtendsClassFields(aClass))
+                    }
+                }
+            }
+        }
+        return psiFields
+    }
+}

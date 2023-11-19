@@ -1,28 +1,39 @@
 # sqltoy-idea-plugin
 
 ![Build](https://github.com/imyuyu/sqltoy-idea-plugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/23156-sqltoy-integration.svg)](https://plugins.jetbrains.com/plugin/23156-sqltoy-integration)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/23156-sqltoy-integration.svg)](https://plugins.jetbrains.com/plugin/23156-sqltoy-integration)
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Get familiar with the [template documentation][template].
-- [ ] Adjust the [pluginGroup](./gradle.properties), [plugin ID](./src/main/resources/META-INF/plugin.xml) and [sources package](./src/main/kotlin).
-- [ ] Adjust the plugin description in `README` (see [Tips][docs:plugin-description])
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html?from=IJPluginTemplate).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the `PLUGIN_ID` in the above README badges.
-- [ ] Set the [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate) related [secrets](https://github.com/JetBrains/intellij-platform-plugin-template#environment-variables).
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html?from=IJPluginTemplate).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
+本项目主要是由于原[sqltoy插件](https://github.com/threefish/sqltoy-idea-plugins)作者[threefish](https://github.com/threefish)没有持续更新，导致后续idea版本及sqltoy新版本无法兼容，所以创建次新工程;
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+## 介绍
+sqltoy-orm is an orm framework that is more suitable for projects than hibernate + my Batis. It has the convenience of adding, deleting, modifying and loading objects, and also has more flexible and elegant custom SQL query functions than my Batis.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+sqltoy-orm是比hibernate+myBatis更加贴合项目的orm框架，具有hibernate增删改和对象加载的便捷性同时也具有比myBatis更加灵活优雅的自定义sql查询功能.
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
+### English
+1. Support xml definition jump java call statement
+2. java call jump xml definition
+3. SQL statement highlighting
+### 中文
+1. 支持xml定义跳转java调用语句
+2. java调用跳转xml定义
+3. SQL语句高亮
 <!-- Plugin description end -->
+
+## todo
+
+- [X] 实现语法高亮
+- [X] 实现java跳转xml定义
+- [X] 实现xml跳转java调用
+- [ ] 实现`double shift`搜索符号
+- [ ] 实现sqlId的`find usages`
+- [ ] 实现sql定义的中的`@`符号自动完成，如`@fast,@Loop`
+- [ ] 实现java调用时的代码自动完成，自动提醒sqlId
+- [ ] 未被调用的sqlId给予警告
+- [ ] 提供新建`sql.xml`文件模板
+- [ ] sql.xml文件图标改为特有标识
 
 ## Installation
 
@@ -38,7 +49,10 @@ To keep everything working, do not remove `<!-- ... -->` sections.
 
 
 ---
-Plugin based on the [IntelliJ Platform Plugin Template][template].
+本工程参考了以下项目，感谢
+- [sqltoy-idea-plugins]，感谢[threefish](https://github.com/threefish)的代码
+- [MybatisX]
 
-[template]: https://github.com/JetBrains/intellij-platform-plugin-template
-[docs:plugin-description]: https://plugins.jetbrains.com/docs/intellij/plugin-user-experience.html#plugin-description-and-presentation
+
+[sqltoy-idea-plugins]: https://github.com/threefish/sqltoy-idea-plugins
+[MybatisX]: https://github.com/baomidou/MybatisX

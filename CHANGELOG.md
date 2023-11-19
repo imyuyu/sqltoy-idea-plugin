@@ -3,5 +3,8 @@
 # sqltoy-idea-plugin Changelog
 
 ## [Unreleased]
+
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- [支持xml文件中sql语法高亮](https://github.com/imyuyu/sqltoy-idea-plugin/issues/5)
+- [支持xml跳转java调用](https://github.com/imyuyu/sqltoy-idea-plugin/issues/3)
+- [支持java跳转xml定义](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)

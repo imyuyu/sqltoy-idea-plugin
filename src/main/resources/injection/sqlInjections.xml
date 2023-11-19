@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LanguageInjectionConfiguration">
+    <injection language="SQL" injector-id="xml">
+        <display-name>SqlToy Sql</display-name>
+        <single-file />
+        <place><![CDATA[
+            xmlTag().withLocalName("value").withParent(xmlTag().withLocalName("sql").withParent(xmlTag().withLocalName("sqltoy")))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("sql.xml")))
+            ]]>
+        </place>
+    </injection>
+</component>

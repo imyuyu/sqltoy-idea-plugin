@@ -1,18 +1,25 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.imyuyu.sqltoyideaplugin</id>
-    <name>sqltoy-idea-plugin Template</name>
+    <id>com.github.imyuyu.sqltoy-idea-plugin</id>
+    <name>Sqltoy Integration</name>
     <vendor>imyuyu</vendor>
 
-    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends optional="true" config-file="injection-sqltoy.xml">org.intellij.intelliLang</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
+    <resource-bundle>messages.Message</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.imyuyu.sqltoyideaplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
+        <!-- xml 2 java ctrl + B  -->
+        <gotoDeclarationHandler order="first" implementation="com.github.imyuyu.sqltoy.provider.Xml2JavaGotoDeclarationHandler" />
 
-    <applicationListeners>
-        <listener class="com.github.imyuyu.sqltoyideaplugin.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+        <!-- xml 2 java -->
+        <codeInsight.lineMarkerProvider id="sqltoy.StatementLineMarkerProvider" language="XML"
+                                        implementationClass="com.github.imyuyu.sqltoy.provider.StatementLineMarkerProvider"/>
+
+        <!-- java 2 xml -->
+        <psi.referenceContributor id="sqlIdMarkerReferenceContributor"
+                                  implementation="com.github.imyuyu.sqltoy.reference.ContextSqlIdMarkReferenceContributor"
+                                  language="JAVA"/>
+    </extensions>
 </idea-plugin>

@@ -1,13 +1,13 @@
-package com.github.imyuyu.sqltoyideaplugin
+package com.github.imyuyu.sqltoy
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
 
 @NonNls
-private const val BUNDLE = "messages.MyBundle"
+private const val BUNDLE = "messages.Message"
 
-object MyBundle : DynamicBundle(BUNDLE) {
+object MessageBundle : DynamicBundle(BUNDLE) {
 
     @JvmStatic
     fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
