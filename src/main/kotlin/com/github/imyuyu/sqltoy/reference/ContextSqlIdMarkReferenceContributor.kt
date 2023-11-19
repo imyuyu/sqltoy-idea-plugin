@@ -10,6 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.util.ProcessingContext
 import org.jetbrains.annotations.NotNull
 import java.util.*
+import java.util.stream.Collectors
 
 
 class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
@@ -65,7 +66,7 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
                             element,
                             psiElement!!
                         )
-                    }.toList().toTypedArray()
+                    }.collect(Collectors.toList()).toTypedArray()
                 }
             }
             return PsiReference.EMPTY_ARRAY
