@@ -6,10 +6,10 @@
 
 本项目主要是由于原[sqltoy插件](https://github.com/threefish/sqltoy-idea-plugins)作者[threefish](https://github.com/threefish)没有持续更新，导致后续idea版本及sqltoy新版本无法兼容，所以创建次新工程;
 
-<!-- Plugin description -->
 ## 介绍
-sqltoy-orm is an orm framework that is more suitable for projects than hibernate + my Batis. It has the convenience of adding, deleting, modifying and loading objects, and also has more flexible and elegant custom SQL query functions than my Batis.
-
+<!-- Plugin description -->
+sqltoy-orm is an orm framework that is more suitable for projects than Hibernate + MyBatis. It has the convenience of adding, deleting, modifying and loading objects, and also has more flexible and elegant custom SQL query functions than MyBatis.
+<!-- Plugin description end -->
 sqltoy-orm是比hibernate+myBatis更加贴合项目的orm框架，具有hibernate增删改和对象加载的便捷性同时也具有比myBatis更加灵活优雅的自定义sql查询功能.
 
 ### English
@@ -20,7 +20,7 @@ sqltoy-orm是比hibernate+myBatis更加贴合项目的orm框架，具有hibernat
 1. 支持xml定义跳转java调用语句
 2. java调用跳转xml定义
 3. SQL语句高亮
-<!-- Plugin description end -->
+
 
 ## todo
 
