@@ -30,7 +30,7 @@ dependencies {
 kotlin {
     @Suppress("UnstableApiUsage")
     jvmToolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(11)
         vendor = JvmVendorSpec.JETBRAINS
     }
 }

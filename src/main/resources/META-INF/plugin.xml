@@ -21,5 +21,8 @@
         <psi.referenceContributor id="sqlIdMarkerReferenceContributor"
                                   implementation="com.github.imyuyu.sqltoy.reference.ContextSqlIdMarkReferenceContributor"
                                   language="JAVA"/>
+
+        <!-- sql.xml图标改为sqltoy -->
+        <iconProvider id="sqltoy.XmlIconProvider" implementation="com.github.imyuyu.sqltoy.provider.XmlIconProvider" />
     </extensions>
 </idea-plugin>

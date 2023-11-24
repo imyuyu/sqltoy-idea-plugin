@@ -1,12 +1,12 @@
 package com.github.imyuyu.sqltoy.util
 
-import com.intellij.debugger.impl.DebuggerUtilsAsync.fields
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.*
 import com.intellij.psi.impl.source.xml.XmlFileImpl
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.xml.XmlAttribute
+import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import java.util.*
 
@@ -72,5 +72,19 @@ object XmlUtil {
         return if (!p2.text.startsWith("new QueryExecutor")) {
             false
         } else isInjectXml(p2, fields)
+    }
+
+    fun isSqltoyXml(element:PsiElement): Boolean {
+        return isXmlFile(element.containingFile) && element.containingFile.name.endsWith(EXT);
+    }
+
+    /**
+     * 判断是否是xml文件
+     *
+     * @param file
+     * @return
+     */
+    fun isXmlFile(file: PsiFile): Boolean {
+        return file is XmlFile
     }
 }
