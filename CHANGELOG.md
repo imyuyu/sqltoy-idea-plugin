@@ -8,3 +8,4 @@
 - [SQL statement highlighting](https://github.com/imyuyu/sqltoy-idea-plugin/issues/5)
 - [Support xml definition jump java call statement](https://github.com/imyuyu/sqltoy-idea-plugin/issues/3)
 - [java call jump xml definition](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)
+- `sql.xml` file use sqltoy icon
