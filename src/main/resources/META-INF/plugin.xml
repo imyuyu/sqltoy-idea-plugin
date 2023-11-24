@@ -24,5 +24,23 @@
 
         <!-- sql.xml图标改为sqltoy -->
         <iconProvider id="sqltoy.XmlIconProvider" implementation="com.github.imyuyu.sqltoy.provider.XmlIconProvider" />
+
+        <localInspection language="XML" shortName="SQLToyXmlInspection"
+                         enabledByDefault="true"
+                         level="WARNING"
+                         id="sqltoy.SqlXmlInspection"
+                         displayName="SQLToy xml inspection"
+                         groupName="SQLToy"
+                         hasStaticDescription="true"
+                         implementationClass="com.github.imyuyu.sqltoy.inspection.XmlInspection"/>
+
+        <fileTemplateGroup id="sqltoy.FileTemplateDescriptorFactory"
+                           implementation="com.github.imyuyu.sqltoy.template.SQLToyFileTemplateDescriptorFactory"/>
     </extensions>
+    
+    <actions>
+        <action id="sqltoy.createFile" icon="/icons/sqltoy_xml.svg" class="com.github.imyuyu.sqltoy.action.CreateSQLToyXmlAction">
+            <add-to-group group-id="NewGroup"/>
+        </action>
+    </actions>
 </idea-plugin>
