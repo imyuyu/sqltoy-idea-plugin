@@ -10,8 +10,13 @@
     <resource-bundle>messages.Message</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+        
+        <fileBasedIndex order="first" implementation="com.github.imyuyu.sqltoy.indexer.SQLIdIndex" />
+        
         <!-- xml 2 java ctrl + B  -->
         <gotoDeclarationHandler order="first" implementation="com.github.imyuyu.sqltoy.provider.Xml2JavaGotoDeclarationHandler" />
+
+        <gotoSymbolContributor order="first" implementation="com.github.imyuyu.sqltoy.provider.SymbolChooseByNameContributor" />
 
         <!-- xml 2 java -->
         <codeInsight.lineMarkerProvider id="sqltoy.StatementLineMarkerProvider" language="XML"

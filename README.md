@@ -37,7 +37,7 @@ sqltoy-orm是比hibernate+myBatis更加贴合项目的orm框架，具有hibernat
 - [X] 实现xml跳转java调用
 - [X] sql.xml文件图标改为特有标识
 - [X] 提供新建`sql.xml`、`sqltoy-translate.xml`文件模板
-- [ ] 实现`double shift`搜索符号
+- [X] 实现`double shift`搜索符号
 - [ ] 实现sqlId的`find usages`
 - [ ] 实现sql定义的中的`@`符号自动完成，如`@fast,@Loop`
 - [ ] 实现java调用时的代码自动完成，自动提醒sqlId
