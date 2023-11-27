@@ -37,7 +37,12 @@ class StatementLineMarkerProvider : SimpleLineMarkerProvider<XmlToken, PsiElemen
 
         val project: Project = from.getProject();
 
-        return Optional.of(JavaUtils.findStatement(project, tag));
+        val elements = JavaUtils.findStatement(project, tag)
+        if(elements.isEmpty()){
+            return Optional.empty();
+        }
+
+        return Optional.of(elements);
     }
 
     override fun getIcon(): Icon {
