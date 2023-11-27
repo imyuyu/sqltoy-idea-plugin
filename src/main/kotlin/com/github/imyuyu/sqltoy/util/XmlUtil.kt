@@ -56,6 +56,9 @@ object XmlUtil {
     }
 
     fun isInjectXml(literalExpression: PsiElement, fields: MutableList<String>): Boolean {
+        if(literalExpression is PsiNewExpression && literalExpression.text.startsWith("new QueryExecutor")){
+            return true;
+        }
         val p1 = literalExpression.parent as? PsiExpressionList ?: return false
         val p2 = p1.parent as? PsiMethodCallExpression ?: return false
         val text = p2.text

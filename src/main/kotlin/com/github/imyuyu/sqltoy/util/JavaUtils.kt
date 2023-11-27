@@ -1,6 +1,7 @@
 package com.github.imyuyu.sqltoy.util
 
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.NlsSafe
 import com.intellij.psi.*
 import com.intellij.psi.search.FilenameIndex
 import com.intellij.psi.util.PsiLiteralUtil
@@ -120,6 +121,15 @@ object JavaUtils {
                             result.add(xmlIdBindPsiElement)
                         }
                     }
+
+                    val psiNewExpressions =
+                        PsiTreeUtil.collectElementsOfType(psiClass, PsiNewExpression::class.java)
+                    for (psiNewExpression in psiNewExpressions) {
+                        val xmlIdBindPsiElement: PsiElement? = getXmlIdBindPsiElement(psiNewExpression, keys, id)
+                        if (xmlIdBindPsiElement != null) {
+                            result.add(xmlIdBindPsiElement)
+                        }
+                    }
                 }
             }
         }
@@ -175,5 +185,28 @@ object JavaUtils {
             }
         }
         return null
+    }
+
+    private fun getXmlIdBindPsiElement(
+        psiNewExpression: PsiNewExpression,
+        keys: List<String>,
+        id: String
+    ): PsiElement? {
+        val text = psiNewExpression.text
+        if(!text.startsWith("new QueryExecutor")){
+            return null;
+        }
+
+        val psiLiteralExpressions = PsiTreeUtil.collectElementsOfType(psiNewExpression, PsiLiteralExpression::class.java);
+        for (psiLiteralExpression in psiLiteralExpressions) {
+            if (!psiLiteralExpression.text.contains(" ") && id == PsiLiteralUtil.getStringLiteralContent(
+                    psiLiteralExpression
+                )
+            ) {
+                return psiLiteralExpression
+            }
+        }
+
+        return null;
     }
 }

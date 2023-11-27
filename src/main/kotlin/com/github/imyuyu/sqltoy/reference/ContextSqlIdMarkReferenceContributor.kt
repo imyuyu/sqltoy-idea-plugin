@@ -53,6 +53,7 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
 
                 val a: Boolean = XmlUtil.isInjectXml(literalExpression, fieldStrings)
                 val b: Boolean = XmlUtil.isNewQueryExecutor(literalExpression, fieldStrings)
+
                 if (a || b) {
                     val project = element.getProject()
                     val virtualFiles = FilenameIndex.getAllFilesByExt(
