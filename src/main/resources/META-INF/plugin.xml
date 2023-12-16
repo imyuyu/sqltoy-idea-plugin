@@ -12,6 +12,7 @@
     <extensions defaultExtensionNs="com.intellij">
         
         <fileBasedIndex order="first" implementation="com.github.imyuyu.sqltoy.indexer.SQLIdIndex" />
+
         
         <!-- xml 2 java ctrl + B  -->
         <gotoDeclarationHandler order="first" implementation="com.github.imyuyu.sqltoy.provider.Xml2JavaGotoDeclarationHandler" />
@@ -41,6 +42,7 @@
 
         <fileTemplateGroup id="sqltoy.FileTemplateDescriptorFactory"
                            implementation="com.github.imyuyu.sqltoy.template.SQLToyFileTemplateDescriptorFactory"/>
+
     </extensions>
     
     <actions>

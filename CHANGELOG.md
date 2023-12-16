@@ -7,6 +7,8 @@
 ### Added
 - Provide templates for creating new `sql.xml` and sqltoy `translate.xml` files
 - Support using `double shift` to search for `sqlId`
+- 支持快捷新建`*.sql.xml`和缓存翻译`translate.xml`
+- 支持使用 `double shift` 搜索 `sqlId`
 
 ## [0.1.0]
 

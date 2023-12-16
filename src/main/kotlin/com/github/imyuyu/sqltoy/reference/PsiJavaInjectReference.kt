@@ -34,7 +34,7 @@ class PsiJavaInjectReference(var formElemnet: PsiElement, var bingdElement: PsiE
 
     @Throws(IncorrectOperationException::class)
     override fun bindToElement(psiElement: PsiElement): PsiElement? {
-        return null
+        return bingdElement
     }
 
     override fun isReferenceTo(psiElement: PsiElement): Boolean {
