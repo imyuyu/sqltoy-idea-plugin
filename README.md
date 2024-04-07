@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/23156-sqltoy-integration.svg)](https://plugins.jetbrains.com/plugin/23156-sqltoy-integration)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/23156-sqltoy-integration.svg)](https://plugins.jetbrains.com/plugin/23156-sqltoy-integration)
 
-本项目主要是由于原[sqltoy插件](https://github.com/threefish/sqltoy-idea-plugins)作者[threefish](https://github.com/threefish)没有持续更新，导致后续idea版本及sqltoy新版本无法兼容，所以创建次新工程;
+本项目主要是由于原[sqltoy插件](https://github.com/threefish/sqltoy-idea-plugins)作者[threefish](https://github.com/threefish)没有持续更新，导致后续idea版本及sqltoy新版本无法兼容，所以创建此新工程;
 
 ## 介绍
 
