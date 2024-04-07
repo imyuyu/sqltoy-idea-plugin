@@ -5,6 +5,11 @@
 ## [Unreleased]
 
 ### Added
+- added support for IntelliJ IDEA 2024.1.
+
+## [0.2.0]
+
+### Added
 - Provide templates for creating new `sql.xml` and sqltoy `translate.xml` files
 - Support using `double shift` to search for `sqlId`
 - 支持快捷新建`*.sql.xml`和缓存翻译`translate.xml`
