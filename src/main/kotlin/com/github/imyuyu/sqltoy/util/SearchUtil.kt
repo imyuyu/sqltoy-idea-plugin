@@ -9,6 +9,7 @@ import com.intellij.psi.PsiReferenceList
 import com.intellij.psi.impl.java.stubs.index.JavaShortClassNameIndex
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.psi.util.PsiUtil
 
 
 object SearchUtil {
@@ -18,7 +19,7 @@ object SearchUtil {
             project!!
         )
         val module =
-            ProjectRootManager.getInstance(project).fileIndex.getModuleForFile(element.containingFile.virtualFile)
+            ProjectRootManager.getInstance(project).fileIndex.getModuleForFile(PsiUtil.getVirtualFile(element)!!)
         if (module != null) {
             searchScope = GlobalSearchScope.moduleScope(module)
         }
@@ -40,6 +41,7 @@ object SearchUtil {
                 val globalSearchScope = GlobalSearchScope.projectScope(psiClass.project)
                 val psiClasses =
                     JavaShortClassNameIndex.getInstance()[referenceElement.referenceName!!, psiClass.project, globalSearchScope]
+
                 for (aClass in psiClasses) {
                     if (aClass.qualifiedName == qualifiedName) {
                         psiFields.addAll(aClass.fields.toList())

@@ -6,6 +6,8 @@
 
 ### Added
 - added support for IntelliJ IDEA 2024.1.
+- 实现java调用时的代码自动完成，自动提醒sqlId
+- 实现java调用中时，快速文档展示
 
 ## [0.2.0]
 

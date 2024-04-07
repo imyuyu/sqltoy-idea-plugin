@@ -16,7 +16,10 @@
         
         <!-- xml 2 java ctrl + B  -->
         <gotoDeclarationHandler order="first" implementation="com.github.imyuyu.sqltoy.provider.Xml2JavaGotoDeclarationHandler" />
+        <!-- java 2 xml -->
+        <!--<gotoDeclarationHandler order="first" implementation="com.github.imyuyu.sqltoy.provider.Java2XmlGotoDeclarationHandler" />-->
 
+        <!-- goto symbol -->
         <gotoSymbolContributor order="first" implementation="com.github.imyuyu.sqltoy.provider.SymbolChooseByNameContributor" />
 
         <!-- xml 2 java -->
@@ -27,6 +30,10 @@
         <psi.referenceContributor id="sqlIdMarkerReferenceContributor"
                                   implementation="com.github.imyuyu.sqltoy.reference.ContextSqlIdMarkReferenceContributor"
                                   language="JAVA"/>
+
+        <!--<psi.referenceContributor id="_sqlIdReferenceContributor"
+                                  implementation="com.github.imyuyu.sqltoy.reference.JavaSqlIdReferenceContributor"
+                                  language="XML"/>-->
 
         <!-- sql.xml图标改为sqltoy -->
         <iconProvider id="sqltoy.XmlIconProvider" implementation="com.github.imyuyu.sqltoy.provider.XmlIconProvider" />
@@ -39,9 +46,33 @@
                          groupName="SQLToy"
                          hasStaticDescription="true"
                          implementationClass="com.github.imyuyu.sqltoy.inspection.XmlInspection"/>
+        <!--<annotator
+                language="XML"
+                implementationClass="com.github.imyuyu.sqltoy.annotator.SqlIdExistAnnotator"/>-->
 
         <fileTemplateGroup id="sqltoy.FileTemplateDescriptorFactory"
                            implementation="com.github.imyuyu.sqltoy.template.SQLToyFileTemplateDescriptorFactory"/>
+
+        <completion.contributor
+                language="JAVA"
+                implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdCompletionContributor"
+                order="first"
+        />
+
+        <!--<completion.confidence language="JAVA" order="before javaSkipAutopopupInStrings"
+                               implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdCompletionConfidence"/>-->
+
+        <!-- 下面这个没用 -->
+        <lang.findUsagesProvider language="XML"
+                                 implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdFindUsagesProvider"
+                                 order="first"
+        />
+
+        <lang.documentationProvider language="JAVA"
+                                    implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdQuickDoc"
+                                    id="sqltoyXml"
+                                    order="before dom"
+        />
 
     </extensions>
     

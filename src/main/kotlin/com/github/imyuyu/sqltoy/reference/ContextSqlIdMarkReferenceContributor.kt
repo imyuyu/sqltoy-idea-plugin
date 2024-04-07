@@ -56,10 +56,11 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
 
                 if (a || b) {
                     val project = element.getProject()
+                    var searchScope = SearchUtil.getSearchScope(project, element)
                     val virtualFiles = FilenameIndex.getAllFilesByExt(
                         project,
                         XmlUtil.EXT,
-                        SearchUtil.getSearchScope(project, element)
+                        searchScope
                     )
                     val elements: List<PsiElement> = XmlUtil.findXmlPsiElement(project, virtualFiles, value)
                     return elements.stream().map { psiElement: PsiElement? ->
