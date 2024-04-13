@@ -9,7 +9,7 @@ import com.intellij.util.ThreeState
 
 class SqlIdCompletionConfidence : CompletionConfidence() {
     override fun shouldSkipAutopopup(contextElement: PsiElement, psiFile: PsiFile, offset: Int): ThreeState {
-        val literalExpression = contextElement.getParent()
+        val literalExpression = contextElement.parent
         if (contextElement !is PsiJavaTokenImpl || literalExpression !is PsiLiteralExpression) {
             return ThreeState.UNSURE
         }

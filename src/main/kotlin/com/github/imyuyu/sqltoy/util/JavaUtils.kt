@@ -23,14 +23,14 @@ object JavaUtils {
 
     fun findStatement(project: Project, from: XmlTag): Array<PsiElement> {
 
-        var id = from.getAttributeValue("id")!!;
+        val id = from.getAttributeValue("id")!!;
 
         val virtualFiles =
             FilenameIndex.getAllFilesByExt(project, "java", SearchUtil.getSearchScope(project, from))
 
         val result: MutableList<PsiElement> = mutableListOf();
         for (virtualFile in virtualFiles) {
-            var psiJavaFile = PsiManager.getInstance(project).findFile(virtualFile)
+            val psiJavaFile = PsiManager.getInstance(project).findFile(virtualFile)
 
             if (psiJavaFile !is PsiJavaFile) {
                 continue

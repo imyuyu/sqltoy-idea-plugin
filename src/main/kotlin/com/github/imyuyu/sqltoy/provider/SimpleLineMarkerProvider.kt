@@ -19,7 +19,7 @@ abstract class SimpleLineMarkerProvider<F : PsiElement?, T : PsiElement> : Relat
         if (processResult.isPresent) {
             val arrays = processResult.get()
             val navigationGutterIconBuilder: NavigationGutterIconBuilder<PsiElement> = NavigationGutterIconBuilder.create(getIcon())
-            if (arrays.size > 0) {
+            if (arrays.isNotEmpty()) {
                 navigationGutterIconBuilder.setTooltipTitle(getTooltip(arrays[0], element))
             }
             navigationGutterIconBuilder.setTargets(arrays.toList())

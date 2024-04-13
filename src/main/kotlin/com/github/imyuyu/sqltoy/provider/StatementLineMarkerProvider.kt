@@ -27,13 +27,8 @@ class StatementLineMarkerProvider : SimpleLineMarkerProvider<XmlToken, PsiElemen
     }
 
     override fun apply(from: XmlToken): Optional<out Array<PsiElement>> {
-        val tag = PsiTreeUtil.getParentOfType<XmlTag>(from, XmlTag::class.java, false)
-        if (tag == null) return Optional.empty();
-
-        val attribute = tag.getAttribute("id")
-        if(attribute == null){
-            return Optional.empty();
-        }
+        val tag = PsiTreeUtil.getParentOfType<XmlTag>(from, XmlTag::class.java, false) ?: return Optional.empty()
+        val attribute = tag.getAttribute("id") ?: return Optional.empty()
 
         val project: Project = from.getProject();
 
@@ -73,7 +68,7 @@ class StatementLineMarkerProvider : SimpleLineMarkerProvider<XmlToken, PsiElemen
 
     private fun isTargetType(@NotNull token: XmlToken): Boolean {
         var targetType: Boolean? = null
-        if (SQLTOY_ROOT.equals(token.text)) {
+        if (SQLTOY_ROOT == token.text) {
             // 判断当前元素是开始节点
             val nextSibling = token.nextSibling
             if (nextSibling is PsiWhiteSpace) {
@@ -81,7 +76,7 @@ class StatementLineMarkerProvider : SimpleLineMarkerProvider<XmlToken, PsiElemen
             }
         }
         if (targetType == null) {
-            if ("sql".equals(token.text)) {
+            if ("sql" == token.text) {
                 val parent = token.parent
                 // 判断当前节点是标签
                 if (parent is XmlTag) {

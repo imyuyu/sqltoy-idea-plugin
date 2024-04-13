@@ -17,29 +17,25 @@ class SQLIdRecordElement(
     record: SQLIdRecord,
     target: PsiTarget
 ) : PomTargetPsiElementImpl(target), NavigatablePsiElement {
-    private val myRecord: SQLIdRecord
-
-    init {
-        myRecord = record
-    }
+    private val myRecord: SQLIdRecord = record
 
     val record: SQLIdRecord
         get() = myRecord
 
-    override fun getName(): String? {
+    override fun getName(): String {
         return myRecord.id;
     }
 
     override fun getPresentableText(): String? {
-        if (getNavigationElement() is PsiJavaFile) {
-            val presentation: ItemPresentation? = (getNavigationElement() as PsiJavaFile).getPresentation()
+        if (navigationElement is PsiJavaFile) {
+            val presentation: ItemPresentation? = (navigationElement as PsiJavaFile).presentation
             if (presentation != null) {
                 return presentation.presentableText
             }
         }
         var text: String = myRecord.id
         if (StringUtil.isNotEmpty(myRecord.module)) {
-            text += (" (" + myRecord.module).toString() + ")"
+            text += (" (" + myRecord.module) + ")"
         }
         return text
     }
@@ -50,8 +46,8 @@ class SQLIdRecordElement(
 
     @Throws(IncorrectOperationException::class)
     override fun setName(name: String): PsiElement {
-        if (getNavigationElement() is XmlTag) {
-            val attribute: XmlAttribute? = (getNavigationElement() as XmlTag).getAttribute("id")
+        if (navigationElement is XmlTag) {
+            val attribute: XmlAttribute? = (navigationElement as XmlTag).getAttribute("id")
             if (attribute != null) {
                 attribute.setValue(name)
                 return attribute
@@ -68,10 +64,10 @@ class SQLIdRecordElement(
         } else super.isEquivalentTo(another)
     }
 
-    override fun equals(o: Any?): Boolean {
-        if (this === o) return true
-        if (o == null || javaClass != o.javaClass) return false
-        val that = o as SQLIdRecordElement
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        val that = other as SQLIdRecordElement
         return myRecord == that.myRecord && target == that.target
     }
 

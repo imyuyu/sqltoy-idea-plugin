@@ -44,7 +44,7 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
                         fieldStrings.add(field.name)
                     }
                 }
-                val extendsClassFields = SearchUtil.getExtendsClassFields(psiClass!!)
+                val extendsClassFields = SearchUtil.getExtendsClassFields(psiClass)
                 for (field in extendsClassFields) {
                     if (JavaUtils.isSqlToyBean(field)) {
                         fieldStrings.add(field.name)
@@ -56,7 +56,7 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
 
                 if (a || b) {
                     val project = element.getProject()
-                    var searchScope = SearchUtil.getSearchScope(project, element)
+                    val searchScope = SearchUtil.getSearchScope(project, element)
                     val virtualFiles = FilenameIndex.getAllFilesByExt(
                         project,
                         XmlUtil.EXT,

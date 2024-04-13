@@ -5,7 +5,7 @@ import com.intellij.util.io.IOUtil
 import java.io.DataInput
 import java.io.DataOutput
 
-class SQLIdRecordExternalizer : DataExternalizer<SQLIdRecord> {
+object SQLIdRecordExternalizer : DataExternalizer<SQLIdRecord> {
     override fun save(out: DataOutput, value: SQLIdRecord) {
         out.writeUTF(value.id);
         out.writeUTF(value.module);

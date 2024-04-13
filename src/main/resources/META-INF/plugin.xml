@@ -65,7 +65,7 @@
         <!-- 下面这个没用 -->
         <lang.findUsagesProvider language="XML"
                                  implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdFindUsagesProvider"
-                                 order="first"
+                                 order="first,before default"
         />
 
         <lang.documentationProvider language="JAVA"

@@ -1,5 +1,7 @@
 package com.github.imyuyu.sqltoy.util
 
+import com.intellij.ide.highlighter.XmlFileType
+import com.intellij.openapi.fileTypes.FileTypeRegistry
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.*
@@ -81,13 +83,19 @@ object XmlUtil {
         return isXmlFile(element.containingFile) && element.containingFile.name.endsWith(EXT);
     }
 
+    fun isSqltoyXml(file: VirtualFile): Boolean {
+        return FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) && file.name.endsWith(EXT);
+    }
+
     /**
      * 判断是否是xml文件
      *
      * @param file
      * @return
      */
-    fun isXmlFile(file: PsiFile): Boolean {
+    private fun isXmlFile(file: PsiFile): Boolean {
         return file is XmlFile
     }
+
+
 }

@@ -40,7 +40,7 @@ object SearchUtil {
                 val qualifiedName = referenceElement.qualifiedName
                 val globalSearchScope = GlobalSearchScope.projectScope(psiClass.project)
                 val psiClasses =
-                    JavaShortClassNameIndex.getInstance()[referenceElement.referenceName!!, psiClass.project, globalSearchScope]
+                    JavaShortClassNameIndex.getInstance().getClasses(referenceElement.referenceName!!, psiClass.project, globalSearchScope)
 
                 for (aClass in psiClasses) {
                     if (aClass.qualifiedName == qualifiedName) {

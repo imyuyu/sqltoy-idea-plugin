@@ -1,6 +1,6 @@
 package com.github.imyuyu.sqltoy.provider
 
-import com.github.imyuyu.sqltoy.indexer.SQLIdIndex
+import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
 import com.github.imyuyu.sqltoy.indexer.SQLIdRecord
 import com.intellij.navigation.ChooseByNameContributorEx
 import com.intellij.navigation.NavigationItem
@@ -15,7 +15,7 @@ class SymbolChooseByNameContributor: ChooseByNameContributorEx {
     override fun processNames(processor: Processor<in String>, scope: GlobalSearchScope, filter: IdFilter?) {
         val project: Project? = scope.project
         if (project != null) {
-            val ids: Collection<String> = SQLIdIndex.getAllIds(project, scope)
+            val ids: Collection<String> = SQLIdIndexHolder.getAllIds(project, scope)
             ids.forEach(processor::process)
         }
     }
@@ -27,7 +27,7 @@ class SymbolChooseByNameContributor: ChooseByNameContributorEx {
     ) {
         val project = parameters.project
         val records: Collection<SQLIdRecord> =
-            SQLIdIndex.findRecordsByQualifiedId(name, project, parameters.searchScope)
+            SQLIdIndexHolder.findRecordsByQualifiedId(name, project, parameters.searchScope)
         records.forEach { record: SQLIdRecord ->
             record.getRecordElements(project).forEach(processor::process)
         }

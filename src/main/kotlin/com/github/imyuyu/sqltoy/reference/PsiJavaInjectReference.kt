@@ -1,6 +1,6 @@
 package com.github.imyuyu.sqltoy.reference
 
-import com.github.imyuyu.sqltoy.indexer.SQLIdIndex
+import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
 import com.github.imyuyu.sqltoy.ui.Icons
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.util.TextRange
@@ -21,7 +21,7 @@ class PsiJavaInjectReference(private var formElement: PsiElement, private var ta
     }
 
     override fun getVariants(): Array<Any?> {
-        val allIds = SQLIdIndex.getAllIds(formElement.project, GlobalSearchScope.projectScope(formElement.project))
+        val allIds = SQLIdIndexHolder.getAllIds(formElement.project, GlobalSearchScope.projectScope(formElement.project))
         return allIds.map {
             LookupElementBuilder.create(it).withIcon(Icons.XML_ICON);
         }.toTypedArray();
