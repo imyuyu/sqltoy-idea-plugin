@@ -16,7 +16,8 @@ object JavaUtils {
     private val TARGET_TYPES: Set<String> = setOf<String>(
         "org.sagacity.sqltoy.dao.SqlToyLazyDao",
         "org.sagacity.sqltoy.dao.LightDao",
-        "org.sagacity.sqltoy.service.SqlToyCRUDService"
+        "org.sagacity.sqltoy.service.SqlToyCRUDService",
+        "com.sagframe.sagacity.sqltoy.plus.dao.SqlToyHelperDao"
     )
 
 
