@@ -6,6 +6,7 @@
 
 ### Added
 - added support for [SqlToy-Plus](https://gitee.com/gzghde/sqltoy-plus);
+- sqltoy sql xml inspection
 
 ### 
 

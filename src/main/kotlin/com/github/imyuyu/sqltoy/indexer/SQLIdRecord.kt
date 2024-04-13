@@ -1,12 +1,12 @@
 package com.github.imyuyu.sqltoy.indexer
 
+import com.github.imyuyu.sqltoy.dom.model.SQLToy
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.DelegatePsiTarget
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
 import com.intellij.psi.PsiTarget
-import com.intellij.psi.util.PsiElementFilter
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
@@ -47,12 +47,22 @@ data class SQLIdRecord(
             ?: return emptyList<PsiElement>()
 
         if(file is XmlFile){
-            val tagName = "sql";
-            val parentTagName = "sqltoy";
 
-            return PsiTreeUtil.collectElementsOfType(file, XmlTag::class.java).filter {tag ->
-                tag.name == tagName && tag.parentTag?.name == parentTagName && tag.getAttributeValue("id") == id
-            }.toList()
+            val fileElement = DomManager.getDomManager(project).getFileElement(file, SQLToy::class.java)
+                ?: return emptyList<PsiElement>()
+
+            val result = mutableListOf<PsiElement>()
+
+            val sqlList = fileElement.rootElement.getSqlList()
+
+            for (sql in sqlList) {
+                val xmlTag = sql.xmlTag
+                if (xmlTag != null) {
+                    result.add(xmlTag)
+                };
+            }
+
+            return result;
         }
 
         return emptyList();

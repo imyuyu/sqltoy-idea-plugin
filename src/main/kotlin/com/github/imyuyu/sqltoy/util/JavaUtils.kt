@@ -210,4 +210,26 @@ object JavaUtils {
 
         return null;
     }
+
+    fun isInjectXml(literalExpression: PsiElement, fields: MutableList<String>): Boolean {
+        if(literalExpression is PsiNewExpression && literalExpression.text.startsWith("new QueryExecutor")){
+            return true;
+        }
+        val p1 = literalExpression.parent as? PsiExpressionList ?: return false
+        val p2 = p1.parent as? PsiMethodCallExpression ?: return false
+        val text = p2.text
+        return fields.stream().filter { s ->
+            text.startsWith("$s.") || text.startsWith("super.$s.") || text.startsWith(
+                "this.$s."
+            )
+        }.findAny().isPresent
+    }
+
+    fun isNewQueryExecutor(literalExpression: PsiLiteralExpression, fields: MutableList<String>): Boolean {
+        val p1 = literalExpression.parent as? PsiExpressionList ?: return false
+        val p2 = p1.parent as? PsiNewExpression ?: return false
+        return if (!p2.text.startsWith("new QueryExecutor")) {
+            false
+        } else isInjectXml(p2, fields)
+    }
 }

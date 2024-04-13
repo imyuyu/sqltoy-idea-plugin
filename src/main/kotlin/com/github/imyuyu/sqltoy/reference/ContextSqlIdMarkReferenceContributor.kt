@@ -1,5 +1,6 @@
 package com.github.imyuyu.sqltoy.reference
 
+import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
 import com.github.imyuyu.sqltoy.util.JavaUtils
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.github.imyuyu.sqltoy.util.XmlUtil
@@ -51,24 +52,25 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
                     }
                 }
 
-                val a: Boolean = XmlUtil.isInjectXml(literalExpression, fieldStrings)
-                val b: Boolean = XmlUtil.isNewQueryExecutor(literalExpression, fieldStrings)
+                val a: Boolean = JavaUtils.isInjectXml(literalExpression, fieldStrings)
+                val b: Boolean = JavaUtils.isNewQueryExecutor(literalExpression, fieldStrings)
 
                 if (a || b) {
                     val project = element.getProject()
                     val searchScope = SearchUtil.getSearchScope(project, element)
-                    val virtualFiles = FilenameIndex.getAllFilesByExt(
-                        project,
-                        XmlUtil.EXT,
-                        searchScope
-                    )
-                    val elements: List<PsiElement> = XmlUtil.findXmlPsiElement(project, virtualFiles, value)
-                    return elements.stream().map { psiElement: PsiElement? ->
-                        PsiJavaInjectReference(
-                            element,
-                            psiElement!!
-                        )
-                    }.collect(Collectors.toList()).toTypedArray()
+                    val sqlIdRecords = SQLIdIndexHolder.findRecordsByQualifiedId(value, project, searchScope)
+
+                    val result = mutableListOf<PsiReference>()
+
+                    for (sqlIdRecord in sqlIdRecords) {
+                        result.addAll( sqlIdRecord.getElements(project).map { psiElement ->
+                            PsiJavaInjectReference(
+                                element,
+                                psiElement
+                            )
+                        }.toTypedArray());
+                    }
+                    return result.toTypedArray();
                 }
             }
             return PsiReference.EMPTY_ARRAY

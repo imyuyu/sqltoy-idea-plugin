@@ -49,12 +49,12 @@ class XmlInspection : XmlSuppressableInspectionTool() {
         //if (refHolder.isValidatable(tag.parent) && refHolder.isDuplicateIdAttributeValue(value!!)) {
         if (refHolder.isValidatable(tag.parent) && tag.name == "sql" && (value.parent as XmlAttribute).name == "id") {
             if(value.value.isEmpty()){
-                holder.registerProblem(
+                /*holder.registerProblem(
                     value,
                     "Invalid sql id",
                     ProblemHighlightType.GENERIC_ERROR,
                     ElementManipulators.getValueTextRange(value)
-                )
+                )*/
             } else {
                 /*holder.registerProblem(
                     value,

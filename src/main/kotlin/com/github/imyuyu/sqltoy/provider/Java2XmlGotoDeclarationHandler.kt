@@ -56,8 +56,8 @@ class Java2XmlGotoDeclarationHandler : GotoDeclarationHandler {
                 }
             }
 
-            val a: Boolean = XmlUtil.isInjectXml(literalExpression, fieldStrings)
-            val b: Boolean = XmlUtil.isNewQueryExecutor(literalExpression, fieldStrings)
+            val a: Boolean = JavaUtils.isInjectXml(literalExpression, fieldStrings)
+            val b: Boolean = JavaUtils.isNewQueryExecutor(literalExpression, fieldStrings)
 
             if (a || b) {
                 val project = element.getProject()

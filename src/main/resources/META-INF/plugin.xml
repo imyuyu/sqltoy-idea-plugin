@@ -13,7 +13,6 @@
         
         <fileBasedIndex order="first" implementation="com.github.imyuyu.sqltoy.indexer.SQLIdIndex" />
 
-        
         <!-- xml 2 java ctrl + B  -->
         <gotoDeclarationHandler order="first" implementation="com.github.imyuyu.sqltoy.provider.Xml2JavaGotoDeclarationHandler" />
         <!-- java 2 xml -->
@@ -38,6 +37,15 @@
         <!-- sql.xml图标改为sqltoy -->
         <iconProvider id="sqltoy.XmlIconProvider" implementation="com.github.imyuyu.sqltoy.provider.XmlIconProvider" />
 
+        <!--<localInspection language="XML" shortName="SQLToyXmlInspection"
+                         enabledByDefault="true"
+                         level="WARNING"
+                         id="sqltoy.SqlXmlInspection"
+                         displayName="SQLToy xml inspection"
+                         groupName="SQLToy"
+                         hasStaticDescription="true"
+                         implementationClass="com.github.imyuyu.sqltoy.inspection.XmlInspection"/>-->
+
         <localInspection language="XML" shortName="SQLToyXmlInspection"
                          enabledByDefault="true"
                          level="WARNING"
@@ -45,7 +53,8 @@
                          displayName="SQLToy xml inspection"
                          groupName="SQLToy"
                          hasStaticDescription="true"
-                         implementationClass="com.github.imyuyu.sqltoy.inspection.XmlInspection"/>
+                         implementationClass="com.github.imyuyu.sqltoy.inspection.SQLToyXmlInspection"/>
+
         <!--<annotator
                 language="XML"
                 implementationClass="com.github.imyuyu.sqltoy.annotator.SqlIdExistAnnotator"/>-->
@@ -73,6 +82,10 @@
                                     id="sqltoyXml"
                                     order="before dom"
         />
+        
+        <dom.fileMetaData
+                id="sqltoy.SqlDescription"
+                implementation="com.github.imyuyu.sqltoy.dom.SQLToyDomFileDescription" rootTagName="sqltoy" />
 
     </extensions>
     

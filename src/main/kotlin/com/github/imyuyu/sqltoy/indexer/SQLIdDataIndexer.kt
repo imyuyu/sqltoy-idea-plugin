@@ -1,5 +1,6 @@
 package com.github.imyuyu.sqltoy.indexer
 
+import com.github.imyuyu.sqltoy.dom.model.SQLToy
 import com.intellij.openapi.module.ModuleUtil
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.xml.XmlAttribute
@@ -7,6 +8,7 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import com.intellij.util.indexing.DataIndexer
 import com.intellij.util.indexing.FileContent
+import com.intellij.util.xml.DomManager
 
 object SQLIdDataIndexer: DataIndexer<String, SQLIdRecord, FileContent> {
 
@@ -17,21 +19,12 @@ object SQLIdDataIndexer: DataIndexer<String, SQLIdRecord, FileContent> {
         val xmlFile = inputData.psiFile as XmlFile
         val mutableMapOf = mutableMapOf<String, SQLIdRecord>()
 
-        val document = xmlFile.document ?: return mutableMapOf;
+        val domManager = DomManager.getDomManager(inputData.project)
+        val fileElement = domManager.getFileElement(xmlFile, SQLToy::class.java) ?: return mutableMapOf
 
-        val rootTag = document.rootTag ?: return mutableMapOf
-        if(rootTag.name != "sqltoy") {
-            return mutableMapOf;
-        }
-
-        val xmlTags: List<XmlTag> = PsiTreeUtil.getChildrenOfAnyType(
-            rootTag,
-            XmlTag::class.java
-        ).filter { it.name == "sql" }
-
-        for (xmlTag in xmlTags) {
-            val xmlAttribute: XmlAttribute? = xmlTag.getAttribute("id")
-            val id: String? = xmlAttribute?.value
+        val sqlList = fileElement.rootElement.getSqlList()
+        for (sql in sqlList) {
+            val id = sql.getId().stringValue?.trim()
             if (id != null && id != "") {
                 mutableMapOf[id] = SQLIdRecord(id, xmlFile.virtualFile, ModuleUtil.findModuleForFile(xmlFile)!!.name)
             }
