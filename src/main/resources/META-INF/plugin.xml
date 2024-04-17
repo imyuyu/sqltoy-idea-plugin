@@ -10,6 +10,9 @@
     <resource-bundle>messages.Message</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+
+        <facetType implementation="com.github.imyuyu.sqltoy.facet.SQLToyFacetType"/>
+        <framework.detector implementation="com.github.imyuyu.sqltoy.facet.SQLToyFrameworkDetector"/>
         
         <fileBasedIndex order="first" implementation="com.github.imyuyu.sqltoy.indexer.SQLIdIndex" />
 
