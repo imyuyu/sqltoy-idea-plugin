@@ -25,6 +25,11 @@ internal class SqlIdCompletionContributor : CompletionContributor() {
                     resultSet: CompletionResultSet
                 ) {
 
+                    // only support literal expression
+                    if(parameters.position.parent !is PsiLiteralExpression){
+                        return
+                    }
+
                     val project = parameters.position.project
 
                     val allIds = SQLIdIndexHolder.getAllIds(

@@ -68,7 +68,6 @@
         <completion.contributor
                 language="JAVA"
                 implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdCompletionContributor"
-                order="first"
         />
 
         <!--<completion.confidence language="JAVA" order="before javaSkipAutopopupInStrings"
