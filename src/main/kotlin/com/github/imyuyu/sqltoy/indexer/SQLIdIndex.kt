@@ -22,9 +22,6 @@ class SQLIdIndex: FileBasedIndexExtension<String, SQLIdRecord>() {
 
     override fun getVersion() = 1;
 
-    companion object {
-
-        @JvmStatic
-        val NAME = ID.create<String, SQLIdRecord>("sqltoy.external.id");
-    }
 }
+
+val NAME = ID.create<String, SQLIdRecord>("sqltoy.external.id");

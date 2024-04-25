@@ -7,6 +7,7 @@ import com.intellij.psi.PsiLiteralExpression
 import com.intellij.psi.impl.source.tree.java.PsiJavaTokenImpl
 import com.intellij.util.ThreeState
 
+@Deprecated(message = "not used")
 class SqlIdCompletionConfidence : CompletionConfidence() {
     override fun shouldSkipAutopopup(contextElement: PsiElement, psiFile: PsiFile, offset: Int): ThreeState {
         val literalExpression = contextElement.parent

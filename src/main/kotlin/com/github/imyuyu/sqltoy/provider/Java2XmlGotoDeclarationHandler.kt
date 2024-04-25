@@ -23,6 +23,7 @@ import com.intellij.psi.xml.XmlToken
 import java.util.*
 import java.util.stream.Collectors
 
+@Deprecated(message = "无需使用")
 class Java2XmlGotoDeclarationHandler : GotoDeclarationHandler {
     override fun getGotoDeclarationTargets(
         element: PsiElement?,

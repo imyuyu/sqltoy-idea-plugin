@@ -7,6 +7,16 @@
 ### Added
 - added support for [SqlToy-Plus](https://gitee.com/gzghde/sqltoy-plus);
 - sqltoy sql xml inspection
+- sqltoy framework detector
+- never use SQL checks
+- 支持单sql.xml文件的语法检查，如id必填，id重复(仅当前xml文件)等
+- 支持自动探测sqltoy框架(暂时太大用处)
+- 支持sqlid未使用检测，当前实现比较简单，未来再扩充
+- 支持sql.xml中针对id查找使用
+
+### Fixed
+- Fix the issue that caused code prompts to become invalid
+- 修复影响代码提示的问题
 
 ### 
 

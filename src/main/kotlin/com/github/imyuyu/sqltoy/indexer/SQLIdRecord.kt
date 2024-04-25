@@ -56,8 +56,8 @@ data class SQLIdRecord(
             val sqlList = fileElement.rootElement.getSqlList()
 
             for (sql in sqlList) {
-                val xmlTag = sql.xmlTag
-                if (xmlTag != null) {
+                val xmlTag = sql.getId().xmlAttributeValue
+                if (xmlTag != null && sql.getId().value == id) {
                     result.add(xmlTag)
                 };
             }

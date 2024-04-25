@@ -16,7 +16,7 @@ object SQLIdIndexHolder {
         scope: GlobalSearchScope?
     ): Collection<String> {
         val ids: MutableList<String> = mutableListOf()
-        FileBasedIndex.getInstance().processAllKeys<String>(SQLIdIndex.NAME, ids::add, scope!!, null)
+        FileBasedIndex.getInstance().processAllKeys<String>(NAME, ids::add, scope!!, null)
         return ids
     }
 
@@ -29,7 +29,7 @@ object SQLIdIndexHolder {
         val index = FileBasedIndex.getInstance()
         for (id in ids) {
             if (!index.processValues(
-                    SQLIdIndex.NAME, id, null,
+                    NAME, id, null,
                     { file: VirtualFile?, value: SQLIdRecord ->
                         val record: SQLIdRecord = value.withDataFile(file)
                         processor.process(record)

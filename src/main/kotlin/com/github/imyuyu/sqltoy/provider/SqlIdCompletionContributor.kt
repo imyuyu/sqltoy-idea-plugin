@@ -11,6 +11,9 @@ import com.intellij.psi.PsiJavaToken
 import com.intellij.psi.PsiLiteralExpression
 import com.intellij.util.ProcessingContext
 
+/**
+ * 代码完成
+ */
 internal class SqlIdCompletionContributor : CompletionContributor() {
 
 

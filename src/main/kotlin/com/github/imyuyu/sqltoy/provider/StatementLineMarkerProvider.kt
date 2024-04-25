@@ -63,7 +63,7 @@ class StatementLineMarkerProvider : SimpleLineMarkerProvider<XmlToken, PsiElemen
         if (text == null) {
             text = target.containingFile.text
         }
-        return "Data access object found - $text"
+        return "Jump To Java"
     }
 
     private fun isTargetType(@NotNull token: XmlToken): Boolean {

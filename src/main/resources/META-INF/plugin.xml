@@ -51,16 +51,15 @@
 
         <localInspection language="XML" shortName="SQLToyXmlInspection"
                          enabledByDefault="true"
-                         level="WARNING"
                          id="sqltoy.SqlXmlInspection"
                          displayName="SQLToy xml inspection"
                          groupName="SQLToy"
                          hasStaticDescription="true"
                          implementationClass="com.github.imyuyu.sqltoy.inspection.SQLToyXmlInspection"/>
 
-        <!--<annotator
+        <annotator
                 language="XML"
-                implementationClass="com.github.imyuyu.sqltoy.annotator.SqlIdExistAnnotator"/>-->
+                implementationClass="com.github.imyuyu.sqltoy.annotator.SqlIdExistAnnotator"/>
 
         <fileTemplateGroup id="sqltoy.FileTemplateDescriptorFactory"
                            implementation="com.github.imyuyu.sqltoy.template.SQLToyFileTemplateDescriptorFactory"/>

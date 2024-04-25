@@ -10,6 +10,7 @@ import com.intellij.psi.PsiLiteralExpression
 import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NonNls
 
+@Deprecated(message = "无需使用")
 class SqlIdFindUsagesProvider : FindUsagesProvider {
 
     override fun canFindUsagesFor(psiElement: PsiElement): Boolean {
