@@ -5,11 +5,15 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.util.Processor
 import com.intellij.util.indexing.FileBasedIndex
+import com.intellij.util.indexing.ID
 
 /**
  * index util
  */
 object SQLIdIndexHolder {
+
+    @JvmStatic
+    val NAME = ID.create<String, SQLIdRecord>("sqltoy.external.id");
 
     fun getAllIds(
         project: Project?,
