@@ -5,6 +5,12 @@
 ## [Unreleased]
 
 ### Added
+- Optimize quick document display content
+- 优化快速文档展示效果，直接显示sql内容
+
+## [0.4.0] - 2024-04-26
+
+### Added
 - added support for [SqlToy-Plus](https://gitee.com/gzghde/sqltoy-plus);
 - sqltoy sql xml inspection
 - sqltoy framework detector
