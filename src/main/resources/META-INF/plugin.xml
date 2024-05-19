@@ -29,6 +29,10 @@
         <codeInsight.lineMarkerProvider id="sqltoy.StatementLineMarkerProvider" language="XML"
                                         implementationClass="com.github.imyuyu.sqltoy.provider.StatementLineMarkerProvider"/>
 
+        <!-- run sql -->
+        <codeInsight.lineMarkerProvider id="sqltoy.RunSqlLineMarkerProvider" language="XML"
+                                        implementationClass="com.github.imyuyu.sqltoy.provider.RunSqlLineMarkerProvider"/>
+
         <!-- java 2 xml -->
         <psi.referenceContributor id="sqlIdMarkerReferenceContributor"
                                   implementation="com.github.imyuyu.sqltoy.reference.ContextSqlIdMarkReferenceContributor"

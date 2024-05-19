@@ -5,8 +5,11 @@
 ## [Unreleased]
 
 ### Added
+- Add SQL execution icon to the `*.sql.xml` 
 - Syntax highlighting is supported when SQL statements are used directly in Java code
+- `*.sql.xml`文件中增加一键执行sql语句(会打开database conole并自动填充sql)
 - 在java代码中直接使用sql时支持语法高亮，如`lightDao.findPage(new Page(), "select * from staff_info")`;
+- `new QueryExecutor("select * from staff_info")`的参数如果是普通sql，则支持语法高亮
 
 ## [0.4.1] - 2024-05-12
 
