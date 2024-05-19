@@ -53,4 +53,12 @@ object SQLIdIndexHolder {
         processRecordsByIds(project, scope, records::add, setOf(id))
         return records
     }
+
+    fun existsSqlId(id: String,
+                    scope: GlobalSearchScope): Boolean{
+
+        val index = FileBasedIndex.getInstance()
+        // 判断index是否存在id
+        return index.getAllKeys(SQLIdIndex.NAME,scope.project!!).contains(id);
+    }
 }

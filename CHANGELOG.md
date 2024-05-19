@@ -5,12 +5,20 @@
 ## [Unreleased]
 
 ### Added
+- Syntax highlighting is supported when SQL statements are used directly in Java code
+- 在java代码中直接使用sql时支持语法高亮，如`lightDao.findPage(new Page(), "select * from staff_info")`;
+
+## [0.4.1] - 2024-05-12
+
+### Added
+
 - Optimize quick document display content
 - 优化快速文档展示效果，直接显示sql内容
 
 ## [0.4.0] - 2024-04-26
 
 ### Added
+
 - added support for [SqlToy-Plus](https://gitee.com/gzghde/sqltoy-plus);
 - sqltoy sql xml inspection
 - sqltoy framework detector
@@ -21,10 +29,9 @@
 - 支持sql.xml中针对id查找使用
 
 ### Fixed
+
 - Fix the issue that caused code prompts to become invalid
 - 修复影响代码提示的问题
-
-### 
 
 ## [0.3.0] - 2024-04-07
 
@@ -52,7 +59,9 @@
 - [java call jump xml definition](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)
 - `sql.xml` file use sqltoy icon
 
-[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.0...v0.4.1
+[0.4.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/imyuyu/sqltoy-idea-plugin/commits/v0.1.0

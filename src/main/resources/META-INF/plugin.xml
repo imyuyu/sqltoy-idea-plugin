@@ -6,6 +6,7 @@
 
     <depends>com.intellij.modules.java</depends>
     <depends optional="true" config-file="injection-sqltoy.xml">org.intellij.intelliLang</depends>
+    <depends optional="true">com.intellij.database</depends>
 
     <resource-bundle>messages.Message</resource-bundle>
 
@@ -77,6 +78,8 @@
                                  implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdFindUsagesProvider"
                                  order="first,before default"
         />
+
+        <multiHostInjector implementation="com.github.imyuyu.sqltoy.provider.MethodMultiHostInjector" />
 
         <lang.documentationProvider language="JAVA"
                                     implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdQuickDoc"
