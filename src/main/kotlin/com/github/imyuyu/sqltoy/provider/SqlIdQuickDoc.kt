@@ -50,7 +50,10 @@ class SqlIdQuickDoc : AbstractDocumentationProvider() {
             .addText(" is defined in ")
             .child(HtmlChunk.link("psi_element://"+ (PsiUtil.getVirtualFile(element)?.path ?: ""), element.containingFile.name)))
         )
-            .append(HtmlChunk.div().setClass(DocumentationMarkup.CLASS_CONTENT).addText(sql.getSqlValue().getValue()!!)).toString();
+            .append(HtmlChunk.div().setClass(DocumentationMarkup.CLASS_CONTENT).addRaw(sql.getSqlValue().getValue()!!
+                .replace("            ", "")
+                .replace(" ", HtmlChunk.nbsp().toString())
+                .replace("\n", HtmlChunk.br().toString()))).toString();
 
         /*return "<div class='definition'>" +
                 "<pre>XML File : <a href=''>" + element.containingFile.name  + "</a></pre>" +
