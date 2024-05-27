@@ -4,6 +4,8 @@ import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.intellij.lang.injection.MultiHostInjector
 import com.intellij.lang.injection.MultiHostRegistrar
+import com.intellij.lang.java.JavaLanguage
+import com.intellij.openapi.fileTypes.PlainTextLanguage
 import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.psi.*
@@ -36,8 +38,21 @@ class MethodMultiHostInjector : MultiHostInjector {
     }
 
     private fun shouldInject(element: PsiElement): Boolean {
-        val sqlId = (element as PsiLiteralExpressionImpl).value.toString()
+        val sqlId = (element as PsiLiteralExpressionImpl).value.toString().trim()
         if(StringUtil.isEmpty(sqlId)){
+            return false;
+        }
+
+        // check sql
+        val lowercaseSql = sqlId.lowercase()
+        if(!lowercaseSql.startsWith("select ") &&
+            !lowercaseSql.startsWith("update ") &&
+            !lowercaseSql.startsWith("insert ") &&
+            !lowercaseSql.startsWith("delete ") &&
+            !lowercaseSql.startsWith("create ") &&
+            !lowercaseSql.startsWith("alter ") &&
+            !lowercaseSql.startsWith("drop ")
+            ){
             return false;
         }
 
