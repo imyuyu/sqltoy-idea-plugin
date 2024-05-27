@@ -18,4 +18,17 @@
             ]]>
         </place>
     </injection>
+
+    <injection language="SQL" injector-id="java">
+        <display-name>Mapping Load Sql</display-name>
+        <single-file />
+        <place><![CDATA[
+            psiMethod().withName("load").withParameters().definedInClass("org.sagacity.sqltoy.config.annotation.OneToMany")
+            ]]>
+        </place>
+        <place><![CDATA[
+            psiMethod().withName("load").withParameters().definedInClass("org.sagacity.sqltoy.config.annotation.OneToOne")
+            ]]>
+        </place>
+    </injection>
 </component>

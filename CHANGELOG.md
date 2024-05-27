@@ -6,7 +6,9 @@
 
 ### Added
 - Inject the `generator` attribute of the `@Id` annotation into the Java class name
+- The load parameter of the @OneToOne and @OneToMany annotations is injected as SQL, with support for syntax highlighting.
 - `@Id`注解的`generator`参数注入为java类名, 方便引用及跳转
+- `@OneToOne`和`@OneToMany`注解的`load`参数注入为sql，支持语法高亮
 
 ### Fixed
 - 修复`2024.1`中语法注入报错的问题
