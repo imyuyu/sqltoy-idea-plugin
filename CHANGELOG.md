@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+- Inject the `generator` attribute of the `@Id` annotation into the Java class name
+- `@Id`注解的`generator`参数注入为java类名, 方便引用及跳转
+
 ### Fixed
 - 修复`2024.1`中语法注入报错的问题
 - 优化语法注入逻辑

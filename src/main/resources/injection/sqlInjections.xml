@@ -9,4 +9,13 @@
             ]]>
         </place>
     </injection>
+
+    <injection language="jvm-class-name" injector-id="java">
+        <display-name>idGenerator Class</display-name>
+        <single-file />
+        <place><![CDATA[
+            psiMethod().withName("generator").withParameters().definedInClass("org.sagacity.sqltoy.config.annotation.Id")
+            ]]>
+        </place>
+    </injection>
 </component>
