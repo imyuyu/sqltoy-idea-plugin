@@ -4,7 +4,13 @@
 
 ## [Unreleased]
 
+### Fixed
+- 修复`2024.1`中语法注入报错的问题
+
+## [0.4.2] - 2024-05-19
+
 ### Added
+
 - Add SQL execution icon to the `*.sql.xml` 
 - Syntax highlighting is supported when SQL statements are used directly in Java code
 - `*.sql.xml`文件中增加一键执行sql语句(会打开database conole并自动填充sql)
@@ -62,7 +68,8 @@
 - [java call jump xml definition](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)
 - `sql.xml` file use sqltoy icon
 
-[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.2...HEAD
+[0.4.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.2.0...v0.3.0

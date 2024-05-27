@@ -36,7 +36,7 @@ class MethodMultiHostInjector : MultiHostInjector {
     }
 
     private fun shouldInject(element: PsiElement): Boolean {
-        val sqlId = (element as PsiLiteralExpressionImpl).value as String
+        val sqlId = (element as PsiLiteralExpressionImpl).value.toString()
         if(StringUtil.isEmpty(sqlId)){
             return false;
         }
