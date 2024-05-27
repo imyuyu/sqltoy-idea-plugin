@@ -37,9 +37,15 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
                     element,
                     PsiClass::class.java
                 )
+
+                // 可能为空
+                if (psiClass == null) {
+                    return emptyArray()
+                }
+
                 val fieldStrings: MutableList<String> = ArrayList()
 
-                val fields = psiClass!!.fields
+                val fields = psiClass.fields
                 for (field in fields) {
                     if (JavaUtils.isSqlToyBean(field)) {
                         fieldStrings.add(field.name)
