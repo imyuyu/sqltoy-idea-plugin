@@ -1,12 +1,21 @@
 # sqltoy-idea-plugin
 
-![Build](https://github.com/imyuyu/sqltoy-idea-plugin/workflows/Build/badge.svg)
+[![Release](https://img.shields.io/github/v/release/imyuyu/sqltoy-idea-plugin?logo=github)](https://github.com/imyuyu/sqltoy-idea-plugin)
 [![Version](https://img.shields.io/jetbrains/plugin/v/23156-sqltoy-integration.svg)](https://plugins.jetbrains.com/plugin/23156-sqltoy-integration)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/23156-sqltoy-integration.svg)](https://plugins.jetbrains.com/plugin/23156-sqltoy-integration)
+![GitHub License](https://img.shields.io/github/license/imyuyu/sqltoy-idea-plugin)
+[![Star](https://img.shields.io/github/stars/imyuyu/sqltoy-idea-plugin.svg?style=social)](https://github.com/imyuyu/sqltoy-idea-plugin)
+![Build](https://github.com/imyuyu/sqltoy-idea-plugin/workflows/Build/badge.svg)
 
-本项目主要是由于原[sqltoy插件](https://github.com/threefish/sqltoy-idea-plugins)作者[threefish](https://github.com/threefish)没有持续更新，导致后续idea版本及sqltoy新版本无法兼容，所以创建此新工程;
+这是一个`sqltoy`的`Idea`插件！！！！！
 
-## 介绍
+## 参考链接
+
+### [sqltoy](https://gitee.com/sagacity/sagacity-sqltoy)
+### [sqltoy Lambda](https://gitee.com/gzghde/sqltoy-plus)
+### [sqltoy管理系统脚手架](https://gitee.com/momoljw/sss-rbac-admin)
+
+## 插件介绍
 
 ### English
 
