@@ -1,6 +1,5 @@
 package com.github.imyuyu.sqltoy.provider
 
-import com.github.imyuyu.sqltoy.reference.PsiJavaInjectReference
 import com.github.imyuyu.sqltoy.util.JavaUtils
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.github.imyuyu.sqltoy.util.XmlUtil
@@ -10,18 +9,9 @@ import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiJavaToken
 import com.intellij.psi.PsiLiteralExpression
-import com.intellij.psi.PsiReference
 import com.intellij.psi.search.FilenameIndex
-import com.intellij.psi.tree.IElementType
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.util.elementType
-import com.intellij.psi.util.parentOfType
-import com.intellij.psi.xml.XmlAttribute
-import com.intellij.psi.xml.XmlAttributeValue
-import com.intellij.psi.xml.XmlTag
-import com.intellij.psi.xml.XmlToken
 import java.util.*
-import java.util.stream.Collectors
 
 @Deprecated(message = "无需使用")
 class Java2XmlGotoDeclarationHandler : GotoDeclarationHandler {
@@ -65,7 +55,7 @@ class Java2XmlGotoDeclarationHandler : GotoDeclarationHandler {
                 val searchScope = SearchUtil.getSearchScope(project, element)
                 val virtualFiles = FilenameIndex.getAllFilesByExt(
                     project,
-                    XmlUtil.EXT,
+                    XmlUtil.SQL_FILE_SUFFIX,
                     searchScope
                 )
                 val elements: List<PsiElement> = XmlUtil.findXmlPsiElement(project, virtualFiles, value)

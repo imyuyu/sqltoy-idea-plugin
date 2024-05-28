@@ -9,7 +9,7 @@ import com.intellij.util.io.KeyDescriptor
 class SQLIdIndex: FileBasedIndexExtension<String, SQLIdRecord>() {
 
     override fun getName(): ID<String, SQLIdRecord> {
-        return NAME
+        return KEY
     }
 
     override fun getIndexer(): DataIndexer<String, SQLIdRecord, FileContent> = SQLIdDataIndexer
@@ -25,6 +25,6 @@ class SQLIdIndex: FileBasedIndexExtension<String, SQLIdRecord>() {
     override fun getVersion() = 1;
 
     companion object {
-        val NAME = ID.create<String, SQLIdRecord>("sqltoy.external.id");
+        val KEY = ID.create<String, SQLIdRecord>("sqltoy.external.id");
     }
 }

@@ -1,12 +1,10 @@
 package com.github.imyuyu.sqltoy.indexer
 
-import com.github.imyuyu.sqltoy.indexer.SQLIdIndex;
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.util.Processor
 import com.intellij.util.indexing.FileBasedIndex
-import com.intellij.util.indexing.ID
 
 /**
  * index util
@@ -18,7 +16,7 @@ object SQLIdIndexHolder {
         scope: GlobalSearchScope?
     ): Collection<String> {
         val ids: MutableList<String> = mutableListOf()
-        FileBasedIndex.getInstance().processAllKeys<String>(SQLIdIndex.NAME, ids::add, scope!!, null)
+        FileBasedIndex.getInstance().processAllKeys<String>(SQLIdIndex.KEY, ids::add, scope!!, null)
         return ids
     }
 
@@ -31,7 +29,7 @@ object SQLIdIndexHolder {
         val index = FileBasedIndex.getInstance()
         for (id in ids) {
             if (!index.processValues(
-                    SQLIdIndex.NAME, id, null,
+                    SQLIdIndex.KEY, id, null,
                     { file: VirtualFile?, value: SQLIdRecord ->
                         val record: SQLIdRecord = value.withDataFile(file)
                         processor.process(record)
@@ -59,6 +57,6 @@ object SQLIdIndexHolder {
 
         val index = FileBasedIndex.getInstance()
         // 判断index是否存在id
-        return index.getAllKeys(SQLIdIndex.NAME,scope.project!!).contains(id);
+        return index.getAllKeys(SQLIdIndex.KEY,scope.project!!).contains(id);
     }
 }

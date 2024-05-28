@@ -1,24 +1,18 @@
 package com.github.imyuyu.sqltoy.util
 
 import com.github.imyuyu.sqltoy.dom.model.SQLToy
-import com.github.imyuyu.sqltoy.indexer.SQLIdRecord
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.openapi.fileTypes.FileTypeRegistry
-import com.intellij.openapi.module.ModuleUtil
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.*
-import com.intellij.psi.impl.source.xml.XmlFileImpl
-import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.xml.XmlAttribute
 import com.intellij.psi.xml.XmlFile
-import com.intellij.psi.xml.XmlTag
 import com.intellij.util.xml.DomManager
-import java.util.*
 
 
 object XmlUtil {
-    const val EXT: String = "sql.xml";
+    const val SQL_FILE_SUFFIX: String = "sql.xml";
+    const val TRANSLATE_FILE_SUFFIX: String = "translate.xml";
 
     fun findXmlPsiElement(project: Project, virtualFiles: Collection<VirtualFile>, key: String): List<PsiElement> {
         val result: MutableList<PsiElement> = mutableListOf();
@@ -44,11 +38,15 @@ object XmlUtil {
     }
 
     fun isSqltoyXml(element:PsiElement): Boolean {
-        return isXmlFile(element.containingFile) && element.containingFile.name.endsWith(EXT);
+        return isXmlFile(element.containingFile) && element.containingFile.name.endsWith(SQL_FILE_SUFFIX)
+    }
+
+    fun isTranslateXml(element:PsiElement): Boolean {
+        return isXmlFile(element.containingFile) && element.containingFile.name.endsWith(TRANSLATE_FILE_SUFFIX)
     }
 
     fun isSqltoyXml(file: VirtualFile): Boolean {
-        return FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) && file.name.endsWith(EXT);
+        return FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) && file.name.endsWith(SQL_FILE_SUFFIX);
     }
 
     /**

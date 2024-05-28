@@ -46,6 +46,7 @@ sqltoy-orm是比hibernate+myBatis更加贴合项目的orm框架，具有hibernat
 - [ ] 实现sql定义的中的`@`符号自动完成，如`@fast,@Loop`
 - [ ] 缓存翻译跳转
 - [ ] 缓存翻译自动完成
+- [X] 缓存翻译中sql相关的支持语法高亮
 
 
 ## Installation

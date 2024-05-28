@@ -11,7 +11,7 @@
     </injection>
 
     <injection language="jvm-class-name" injector-id="java">
-        <display-name>idGenerator Class</display-name>
+        <display-name>SqlToy IdGenerator Class</display-name>
         <single-file />
         <place><![CDATA[
             psiMethod().withName("generator").withParameters().definedInClass("org.sagacity.sqltoy.config.annotation.Id")
@@ -19,15 +19,17 @@
         </place>
     </injection>
 
-    <injection language="SQL" injector-id="java">
-        <display-name>Mapping Load Sql</display-name>
+    <injection language="SQL" injector-id="xml">
+        <display-name>SqlToy Translate Sql</display-name>
         <single-file />
         <place><![CDATA[
-            psiMethod().withName("load").withParameters().definedInClass("org.sagacity.sqltoy.config.annotation.OneToMany")
+            xmlTag().withLocalName("sql").withParent(xmlTag().withLocalName("sql-translate").withParent(xmlTag().withLocalName("cache-translates").withParent(xmlTag().withLocalName("sagacity"))))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("-translate.xml")))
             ]]>
         </place>
         <place><![CDATA[
-            psiMethod().withName("load").withParameters().definedInClass("org.sagacity.sqltoy.config.annotation.OneToOne")
+            xmlTag().withLocalName("sql").withParent(xmlTag().withLocalName("sql-increment-checker").withParent(xmlTag().withLocalName("cache-update-checkers").withParent(xmlTag().withLocalName("sagacity"))))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("-translate.xml")))
             ]]>
         </place>
     </injection>

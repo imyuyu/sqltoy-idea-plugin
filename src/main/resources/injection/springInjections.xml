@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LanguageInjectionConfiguration">
+    <injection language="spring-bean-name" injector-id="xml">
+        <display-name>SqlToy Spring Bean Name</display-name>
+        <single-file />
+        <place><![CDATA[
+            xmlAttribute().withLocalName("datasource").withParent(xmlTag().withLocalName("sql-increment-checker").withParent(xmlTag().withLocalName("cache-update-checkers").withParent(xmlTag().withLocalName("sagacity"))))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("-translate.xml")))
+
+            ]]>
+        </place>
+        <place><![CDATA[
+            xmlAttribute().withLocalName("service").withParent(xmlTag().withLocalName("service-checker").withParent(xmlTag().withLocalName("cache-update-checkers").withParent(xmlTag().withLocalName("sagacity"))))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("-translate.xml")))
+
+            ]]>
+        </place>
+        <place><![CDATA[
+            xmlAttribute().withLocalName("datasource").withParent(xmlTag().withLocalName("sql-translate").withParent(xmlTag().withLocalName("cache-translates").withParent(xmlTag().withLocalName("sagacity"))))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("-translate.xml")))
+            ]]>
+        </place>
+        <place><![CDATA[
+            xmlAttribute().withLocalName("service").withParent(xmlTag().withLocalName("service-translate").withParent(xmlTag().withLocalName("cache-translates").withParent(xmlTag().withLocalName("sagacity"))))
+                    .inVirtualFile(virtualFile().withName(string().endsWith("-translate.xml")))
+
+            ]]>
+        </place>
+    </injection>
+
+
+</component>

@@ -7,6 +7,8 @@
     <depends>com.intellij.modules.java</depends>
     <depends optional="true" config-file="injection-sqltoy.xml">org.intellij.intelliLang</depends>
     <depends optional="true" config-file="sqltoy-database.xml">com.intellij.database</depends>
+    <depends optional="true" config-file="spring.xml">com.intellij.spring</depends>
+    <depends optional="true" config-file="spring-boot.xml">com.intellij.spring.boot</depends>
 
     <resource-bundle>messages.Message</resource-bundle>
 
@@ -94,6 +96,10 @@
         <dom.fileMetaData
                 id="sqltoy.SqlDescription"
                 implementation="com.github.imyuyu.sqltoy.dom.SQLToyDomFileDescription" rootTagName="sqltoy" />
+
+        <dom.fileMetaData
+                id="sqltoy.TranslateDescription"
+                implementation="com.github.imyuyu.sqltoy.dom.SQLToyTranslateDomFileDescription" rootTagName="sagacity" />
 
     </extensions>
     

@@ -1,0 +1,3 @@
+<idea-plugin>
+    <depends config-file="injection-sqltoy-spring.xml" optional="true">org.intellij.intelliLang</depends>
+</idea-plugin>

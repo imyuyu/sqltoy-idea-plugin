@@ -12,7 +12,7 @@ class XmlIconProvider:IconProvider() {
             return null;
         }
 
-        if(XmlUtil.isSqltoyXml(element)){
+        if(XmlUtil.isSqltoyXml(element) || XmlUtil.isTranslateXml(element)){
             return Icons.XML_ICON;
         }
         return null;
