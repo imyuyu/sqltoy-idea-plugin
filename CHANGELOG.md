@@ -4,7 +4,10 @@
 
 ## [Unreleased]
 
+## [0.4.3] - 2024-05-28
+
 ### Added
+
 - Inject the `generator` attribute of the `@Id` annotation into the Java class name
 - The load parameter of the @OneToOne and @OneToMany annotations is injected as SQL, with support for syntax highlighting.
 - `*-translate.xml` files support syntax highlighting.
@@ -15,6 +18,7 @@
 - `*-translate.xml` file use sqltoy icon
 
 ### Fixed
+
 - 修复`2024.1`中语法注入报错的问题
 - 优化语法注入逻辑
 - 增强健壮性，修复在某些情况下插件报错的问题
@@ -80,7 +84,8 @@
 - [java call jump xml definition](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)
 - `sql.xml` file use sqltoy icon
 
-[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.2...HEAD
+[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.3...HEAD
+[0.4.3]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.3.0...v0.4.0
