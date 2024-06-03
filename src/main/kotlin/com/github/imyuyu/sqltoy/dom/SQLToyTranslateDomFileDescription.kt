@@ -9,8 +9,11 @@ class SQLToyTranslateDomFileDescription : DomFileDescription<SQLToyTranslate>(SQ
     override fun initializeFileDescription() {
         registerNamespacePolicy(
             "SQLToyTranslateXml",
+            "http://www.sagframe.com/schema/sqltoy-translate",
             "https://www.sagframe.com/schema/sqltoy-translate",
+            "http://www.w3.org/2001/XMLSchema-instance",
             "https://www.w3.org/2001/XMLSchema-instance",
+            "http://www.sagframe.com/schema/sqltoy/sqltoy-translate.xsd",
             "https://www.sagframe.com/schema/sqltoy/sqltoy-translate.xsd"
         )
     }

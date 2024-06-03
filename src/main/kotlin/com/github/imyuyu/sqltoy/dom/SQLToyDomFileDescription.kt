@@ -9,8 +9,11 @@ class SQLToyDomFileDescription : DomFileDescription<SQLToy>(SQLToy::class.java, 
         registerNamespacePolicy(
             "SQLToyXml",
             "http://www.sagframe.com/schema/sqltoy",
+            "https://www.sagframe.com/schema/sqltoy",
             "http://www.w3.org/2001/XMLSchema-instance",
-            "http://www.sagframe.com/schema/sqltoy/sqltoy.xsd"
+            "https://www.w3.org/2001/XMLSchema-instance",
+            "http://www.sagframe.com/schema/sqltoy/sqltoy.xsd",
+            "https://www.sagframe.com/schema/sqltoy/sqltoy.xsd"
         )
     }
 
