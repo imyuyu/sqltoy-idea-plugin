@@ -46,7 +46,9 @@ object XmlUtil {
     }
 
     fun isSqltoyXml(file: VirtualFile): Boolean {
-        return FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) && file.name.endsWith(SQL_FILE_SUFFIX);
+        return FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) && (
+                file.name.endsWith(SQL_FILE_SUFFIX) || file.name.endsWith(TRANSLATE_FILE_SUFFIX)
+                )
     }
 
     /**

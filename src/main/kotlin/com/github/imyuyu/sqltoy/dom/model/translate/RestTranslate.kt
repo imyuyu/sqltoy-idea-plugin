@@ -1,10 +1,7 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
 import com.github.imyuyu.sqltoy.dom.model.ValueElement
-import com.intellij.util.xml.Attribute
-import com.intellij.util.xml.DomElement
-import com.intellij.util.xml.Required
-import com.intellij.util.xml.SubTag
+import com.intellij.util.xml.*
 
 /**
  * The interface rest-translate element.
@@ -14,6 +11,6 @@ import com.intellij.util.xml.SubTag
 interface RestTranslate : Translate {
 
     @Required
-    @SubTag("url")
-    fun getUrl() : ValueElement
+    @Attribute("url")
+    fun getUrl() : GenericAttributeValue<String>
 }

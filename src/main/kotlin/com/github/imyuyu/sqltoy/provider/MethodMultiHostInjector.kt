@@ -1,6 +1,7 @@
 package com.github.imyuyu.sqltoy.provider
 
 import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
+import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.intellij.lang.injection.MultiHostInjector
 import com.intellij.lang.injection.MultiHostRegistrar
@@ -94,6 +95,7 @@ class MethodMultiHostInjector : MultiHostInjector {
 
         if ((containingClass.qualifiedName == "org.sagacity.sqltoy.dao.LightDao" || containingClass.qualifiedName == "org.sagacity.sqltoy.dao.SqlToyLazyDao")
             && methodName.startsWith("find") && !SQLIdIndexHolder.existsSqlId(
+                SQLToyBeanIndexType.SQL_ID,
                 sqlId,
                 SearchUtil.getSearchScope(element.project, element)
             )
@@ -113,6 +115,7 @@ class MethodMultiHostInjector : MultiHostInjector {
         val newExpressionClass = newExpression.resolveConstructor()?.containingClass
         if (newExpressionClass != null && newExpressionClass.qualifiedName == "org.sagacity.sqltoy.model.QueryExecutor" &&
             !SQLIdIndexHolder.existsSqlId(
+                SQLToyBeanIndexType.SQL_ID,
                 sqlId,
                 SearchUtil.getSearchScope(element.project, element)
             )) {

@@ -23,7 +23,7 @@ class SQLIdRecordElement(
         get() = myRecord
 
     override fun getName(): String {
-        return myRecord.id;
+        return myRecord.id.second;
     }
 
     override fun getPresentableText(): String? {
@@ -33,7 +33,7 @@ class SQLIdRecordElement(
                 return presentation.presentableText
             }
         }
-        var text: String = myRecord.id
+        var text: String = myRecord.id.second
         if (StringUtil.isNotEmpty(myRecord.module)) {
             text += (" (" + myRecord.module) + ")"
         }

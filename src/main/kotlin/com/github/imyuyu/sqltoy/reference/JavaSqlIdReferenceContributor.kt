@@ -4,6 +4,7 @@ import com.intellij.psi.PsiReferenceContributor
 import com.intellij.psi.PsiReferenceRegistrar
 import com.intellij.xml.util.XmlUtil
 
+@Deprecated(message = "unused")
 class JavaSqlIdReferenceContributor : PsiReferenceContributor() {
     override fun registerReferenceProviders(registrar: PsiReferenceRegistrar) {
         val provider = SqlIdReferenceProvider()

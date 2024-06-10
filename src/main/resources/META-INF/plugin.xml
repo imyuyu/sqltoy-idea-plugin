@@ -35,10 +35,21 @@
         <codeInsight.lineMarkerProvider id="sqltoy.RunSqlLineMarkerProvider" language="XML"
                                         implementationClass="com.github.imyuyu.sqltoy.provider.RunSqlLineMarkerProvider"/>
 
-        <!-- java 2 xml -->
+        <!-- sqlid java 2 xml -->
         <psi.referenceContributor id="sqlIdMarkerReferenceContributor"
                                   implementation="com.github.imyuyu.sqltoy.reference.ContextSqlIdMarkReferenceContributor"
                                   language="JAVA"/>
+
+        <codeInsight.lineMarkerProvider id="sqltoy.translateIdLineMarkerProvider" language="XML"
+                                        implementationClass="com.github.imyuyu.sqltoy.provider.TranslateIdLineMarkerProvider"/>
+
+        <!-- sqlid java 2 xml -->
+        <psi.referenceContributor id="translateIdMarkReferenceContributor"
+                                  implementation="com.github.imyuyu.sqltoy.reference.TranslateIdMarkReferenceContributor"
+                                  language="JAVA"/>
+
+        <referenceInjector implementation="com.github.imyuyu.sqltoy.references.injector.SQLToySqlIdReferenceInjector" />
+        <referenceInjector implementation="com.github.imyuyu.sqltoy.references.injector.SQLToyTranslateIdReferenceInjector" />
 
         <!--<psi.referenceContributor id="_sqlIdReferenceContributor"
                                   implementation="com.github.imyuyu.sqltoy.reference.JavaSqlIdReferenceContributor"
@@ -71,10 +82,10 @@
         <fileTemplateGroup id="sqltoy.FileTemplateDescriptorFactory"
                            implementation="com.github.imyuyu.sqltoy.template.SQLToyFileTemplateDescriptorFactory"/>
 
-        <completion.contributor
+        <!--<completion.contributor
                 language="JAVA"
                 implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdCompletionContributor"
-        />
+        />-->
 
         <!--<completion.confidence language="JAVA" order="before javaSkipAutopopupInStrings"
                                implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdCompletionConfidence"/>-->
@@ -84,6 +95,8 @@
                                  implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdFindUsagesProvider"
                                  order="first,before default"
         />
+        
+        <findUsagesHandlerFactory implementation="com.github.imyuyu.sqltoy.SQLToyFindUsagesHandlerFactory" />
 
         <multiHostInjector implementation="com.github.imyuyu.sqltoy.provider.MethodMultiHostInjector" />
 
@@ -101,6 +114,17 @@
                 id="sqltoy.TranslateDescription"
                 implementation="com.github.imyuyu.sqltoy.dom.SQLToyTranslateDomFileDescription" rootTagName="sagacity" />
 
+        <dom.converter interfaceClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToySqlIdConverter"
+                       implementationClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToySqlIdConverterImpl"/>
+        <dom.converter interfaceClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToyTranslateConverter"
+                       implementationClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToyTranslateConverterImpl"/>
+
+        <!-- 缓存翻译检查代码完成 -->
+        <completion.contributor
+                language="XML"
+                order="first, before dom"
+                implementationClass="com.github.imyuyu.sqltoy.provider.TranslateCheckerCompletionContributor"
+        />
     </extensions>
     
     <actions>

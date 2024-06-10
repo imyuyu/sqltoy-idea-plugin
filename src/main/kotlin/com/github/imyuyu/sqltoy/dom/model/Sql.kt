@@ -1,5 +1,6 @@
 package com.github.imyuyu.sqltoy.dom.model
 
+import com.github.imyuyu.sqltoy.dom.model.converters.SQLToySqlIdConverter
 import com.intellij.util.xml.*
 import org.jetbrains.annotations.NotNull
 
@@ -15,7 +16,8 @@ interface Sql : DomElement {
      *
      * @return the id
      */
-    @Required
+    @Referencing(value = SQLToySqlIdConverter::class, soft = true)
+    @Required(identifier = true)
     @NameValue
     @Attribute("id")
     fun getId(): GenericAttributeValue<String>
@@ -42,4 +44,7 @@ interface Sql : DomElement {
 
     @SubTag("page-optimize")
     fun getPageOptimize() : PageOptimize
+
+    @SubTagList("translate")
+    fun getTranslate(): List<TranslateConfig>
 }

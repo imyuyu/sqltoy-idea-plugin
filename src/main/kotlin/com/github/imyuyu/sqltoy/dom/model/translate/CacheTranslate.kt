@@ -15,10 +15,10 @@ interface CacheTranslate : DomElement {
     fun getSqlTranslate() : List<SqlTranslate>
 
     @SubTagList("service-translate")
-    fun getRestTranslate() : List<RestTranslate>
+    fun getRestTranslate() : List<ServiceTranslate>
 
     @SubTagList("rest-translate")
-    fun getServiceTranslate() : List<ServiceTranslate>
+    fun getServiceTranslate() : List<RestTranslate>
 
     @SubTagsList("sql-translate", "service-translate", "rest-translate")
     fun getAllTranslate() : List<Translate>

@@ -2,6 +2,7 @@ package com.github.imyuyu.sqltoy.dom.model.translate
 
 import com.intellij.util.xml.DomElement
 import com.intellij.util.xml.Namespace
+import com.intellij.util.xml.SubTag
 import com.intellij.util.xml.SubTagList
 import org.jetbrains.annotations.NotNull
 
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.NotNull
  *
  * @author imyuyu
  */
-@Namespace("SQLToyTranslateXML")
+@Namespace("SQLToyTranslateXml")
 interface SQLToyTranslate : DomElement {
 
     /**
@@ -18,15 +19,14 @@ interface SQLToyTranslate : DomElement {
      *
      * @return the sql elements
      */
-    @NotNull
-    @SubTagList("cache-translates")
+    @SubTag("cache-translates")
     fun getTranslates(): CacheTranslate
 
 
     /**
      * Gets cache-update-checkers elements.
      */
-    @SubTagList("cache-update-checkers")
+    @SubTag("cache-update-checkers")
     fun getUpdateChecker(): CacheUpdateChecker
 
 }

@@ -11,6 +11,7 @@ import com.intellij.psi.xml.XmlTag
 import com.intellij.util.ProcessingContext
 import java.util.*
 
+@Deprecated(message = "unused")
 class SqlIdReferenceProvider : PsiReferenceProvider() {
     override fun getReferencesByElement(
         psiElement: PsiElement,

@@ -4,6 +4,22 @@
 
 ## [Unreleased]
 
+### Added
+- Support cache translation reference redirection
+- Added language injections: 'SQLToy SQL ID' and 'SQLToy TRANSLATE ID'
+- 支持`*-translate.xml`文件的缓存定义跳转至java代码`lightDao.getTranslateCache`、`new CacheMatchFilter().cacheName("dictKeyName")`、`new Translate("dictKeyName")`
+- 支持`*-translate.xml`文件内部`Checker`属性的`cache`值跳转到缓存定义。`<sql-increment-checker cache="dictKeyName">`、`<sql-translate
+  cache="dictKeyName">`
+- 支持`*.sql.xml`文件`sql`定义中`cache`值跳转到缓存定义.`<sql id="sys_findStaffInfo"><translate cache="dictKeyName" columns="DICT_KEY" /></sql>`
+- 以上所有xml中的`cache`属性,java中的`cacheName`均支持自动完成、自动提示
+- `sqlId`、`cacheName`的引用均增加了下划线高亮.
+- 增加了`SQLToy SQL ID`、`SQLToy TRANSLATE ID`两个语言注入，可以在任意字符串位置将某个字符串注入为`sqlId`或`cacheName`，注入后效果一致
+
+### Changed
+- Refactoring indexes while supporting SQLId and cache translation
+- 重构了文件索引以同时支持`sqlId`和缓存翻译
+- 优化部分代码匹配机制，提高性能及内存消耗
+
 ## [0.4.3] - 2024-05-28
 
 ### Added

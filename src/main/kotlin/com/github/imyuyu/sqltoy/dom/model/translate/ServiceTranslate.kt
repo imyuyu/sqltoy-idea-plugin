@@ -1,6 +1,7 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
 import com.github.imyuyu.sqltoy.dom.model.ValueElement
+import com.intellij.spring.model.converters.SpringBeanIdConverter
 import com.intellij.util.xml.*
 import java.lang.reflect.Method
 
@@ -13,7 +14,7 @@ interface ServiceTranslate : Translate {
 
     @Required
     @Attribute("service")
-    fun getService() : ValueElement
+    fun getService() : GenericAttributeValue<String>
 
     @Required
     @Attribute("keep-alive")
@@ -21,5 +22,5 @@ interface ServiceTranslate : Translate {
 
     @Required
     @Attribute("method")
-    fun getMethod() : Method
+    fun getMethod() : GenericAttributeValue<String>
 }

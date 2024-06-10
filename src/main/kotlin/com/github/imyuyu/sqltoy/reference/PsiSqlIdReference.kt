@@ -10,12 +10,13 @@ import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.parentOfTypes
 import com.intellij.psi.xml.XmlTag
 
+@Deprecated("unused")
 class PsiSqlIdReference(private var formElement: PsiElement, private var textRange: TextRange) : PsiPolyVariantReferenceBase<PsiElement>(
     formElement, textRange
 ) {
 
     override fun getVariants(): Array<Any?> {
-        val allIds = SQLIdIndexHolder.getAllIds(formElement.project, GlobalSearchScope.projectScope(formElement.project))
+        val allIds = SQLIdIndexHolder.getAllSqlIds(formElement.project, GlobalSearchScope.projectScope(formElement.project))
         return allIds.map {
             LookupElementBuilder.create(it).withIcon(Icons.XML_ICON);
         }.toTypedArray();

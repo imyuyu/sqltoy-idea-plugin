@@ -1,8 +1,8 @@
 package com.github.imyuyu.sqltoy.provider
 
 import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
+import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
 import com.github.imyuyu.sqltoy.ui.Icons
-import com.github.imyuyu.sqltoy.util.JavaUtils
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
@@ -35,12 +35,13 @@ internal class SqlIdCompletionContributor : CompletionContributor() {
 
                     val project = parameters.position.project
 
-                    val allIds = SQLIdIndexHolder.getAllIds(
+                    val allIds = SQLIdIndexHolder.getAllSqlIds(
                         project,
                         SearchUtil.getSearchScope(project, parameters.position)
                     )
                     for (allId in allIds) {
                         val sqlIdRecord = SQLIdIndexHolder.findRecordsByQualifiedId(
+                            SQLToyBeanIndexType.SQL_ID,
                             allId,
                             project,
                             SearchUtil.getSearchScope(

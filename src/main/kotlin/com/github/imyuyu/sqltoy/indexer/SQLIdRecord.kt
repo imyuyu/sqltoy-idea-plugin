@@ -1,24 +1,29 @@
 package com.github.imyuyu.sqltoy.indexer
 
 import com.github.imyuyu.sqltoy.dom.model.SQLToy
+import com.github.imyuyu.sqltoy.dom.model.Sql
+import com.github.imyuyu.sqltoy.dom.model.translate.Translate
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.Pair
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.DelegatePsiTarget
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiManager
 import com.intellij.psi.PsiTarget
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.xml.XmlFile
+import com.intellij.psi.util.PsiUtil
 import com.intellij.psi.xml.XmlTag
+import com.intellij.testFramework.utils.vfs.getPsiFile
+import com.intellij.util.xml.DomElement
 import com.intellij.util.xml.DomManager
 import com.intellij.util.xml.DomTarget
 import java.util.*
 
 
 data class SQLIdRecord(
-    val id: String,
+    val id: Pair<SQLToyBeanIndexType, String>,
     val myDataFile: VirtualFile?,
-    val module: String
+    val module: String,
+    val offset: Int
 ) {
     fun getRecordElements(project: Project): Collection<SQLIdRecordElement> {
         val recordElements: MutableList<SQLIdRecordElement> = mutableListOf();
@@ -39,40 +44,43 @@ data class SQLIdRecord(
         return recordElements
     }
 
+    /**
+     * 获取对应元素
+     */
     fun getElements(project: Project): List<PsiElement> {
         if (myDataFile == null || !myDataFile.isValid) {
             return emptyList()
         }
-        val file = PsiManager.getInstance(project).findFile(myDataFile)
-            ?: return emptyList<PsiElement>()
 
-        if(file is XmlFile){
+        val domManager = DomManager.getDomManager(project)
 
-            val fileElement = DomManager.getDomManager(project).getFileElement(file, SQLToy::class.java)
-                ?: return emptyList<PsiElement>()
+        val file = PsiUtil.getPsiFile(project, myDataFile);
 
-            val result = mutableListOf<PsiElement>()
+        val psiElement: PsiElement? = file.findElementAt(offset);
 
-            val sqlList = fileElement.rootElement.getSqlList()
+        val domElement: DomElement? = domManager.getDomElement(
+            PsiTreeUtil.getParentOfType(
+                psiElement,
+                XmlTag::class.java, false
+            )
+        )
 
-            for (sql in sqlList) {
-                val xmlTag = sql.getId().xmlAttributeValue
-                if (xmlTag != null && sql.getId().value == id) {
-                    result.add(xmlTag)
-                };
-            }
-
-            return result;
+        if (domElement == null || (id.first == SQLToyBeanIndexType.SQL_ID && domElement !is Sql) || (id.first == SQLToyBeanIndexType.TRANSLATE_ID && domElement !is Translate)) {
+            return emptyList();
         }
 
-        return emptyList();
+        val result = mutableListOf<PsiElement>()
+
+        result.add(domElement.xmlElement!!);
+
+        return result;
     }
 
     fun withDataFile(file: VirtualFile?): SQLIdRecord {
         if (Objects.equals(myDataFile, file)) {
             return this;
         }
-        return SQLIdRecord(id, file, module);
+        return SQLIdRecord(id, file, module, offset);
     }
 
     override fun equals(other: Any?): Boolean {
@@ -83,6 +91,7 @@ data class SQLIdRecord(
 
         if (id != other.id) return false
         if (module != other.module) return false
+        if (offset != other.offset) return false
 
         return true
     }

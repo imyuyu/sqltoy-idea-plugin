@@ -1,9 +1,11 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
 import com.github.imyuyu.sqltoy.dom.model.ValueElement
+import com.github.imyuyu.sqltoy.dom.model.converters.SQLToyTranslateConverter
 import com.intellij.util.xml.Attribute
 import com.intellij.util.xml.DomElement
 import com.intellij.util.xml.GenericAttributeValue
+import com.intellij.util.xml.Referencing
 import com.intellij.util.xml.Required
 
 /**
@@ -11,9 +13,10 @@ import com.intellij.util.xml.Required
  */
 interface Checker : DomElement {
 
+    @Referencing(SQLToyTranslateConverter::class)
     @Required
     @Attribute("cache")
-    fun getCache() : ValueElement
+    fun getCache() : GenericAttributeValue<String>
 
     @Attribute("check-frequency")
     fun getCheckFrequency() : GenericAttributeValue<Int>

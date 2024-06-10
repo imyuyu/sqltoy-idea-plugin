@@ -1,3 +1,11 @@
 <idea-plugin>
-
+    <!--<actions>
+        &lt;!&ndash; Add your actions here &ndash;&gt;
+        <action id="SQLToy.createJava" class="com.github.imyuyu.sqltoy.action.MainActionGroup" text="Create SQLToy Entities From DB"
+                icon="com.intellij.icons.ExpUiIcons.Javaee.PersistenceEntity"
+               popup="true">
+            &lt;!&ndash;生成java代码&ndash;&gt;
+            <add-to-group group-id="DatabaseViewPopupMenu" anchor="first"/>
+        </action>
+    </actions>-->
 </idea-plugin>

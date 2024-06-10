@@ -13,9 +13,9 @@ interface ServiceChecker : Checker {
 
     @Required
     @Attribute("service")
-    fun getService() : ValueElement
+    fun getService() : GenericAttributeValue<String>
 
     @Required
     @Attribute("method")
-    fun getMethod() : Method
+    fun getMethod() : GenericAttributeValue<String>
 }

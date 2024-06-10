@@ -1,11 +1,17 @@
 package com.github.imyuyu.sqltoy.util
 
+import ai.grazie.utils.toDistinctTypedArray
+import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.NlsSafe
+import com.intellij.patterns.PsiClassPattern
+import com.intellij.patterns.PsiJavaPatterns
 import com.intellij.psi.*
 import com.intellij.psi.search.FilenameIndex
+import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiLiteralUtil
 import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.psi.util.PsiUtilCore
 import com.intellij.psi.xml.XmlTag
 import org.apache.commons.collections.CollectionUtils
 import java.util.*
@@ -232,4 +238,51 @@ object JavaUtils {
             false
         } else isInjectXml(p2, fields)
     }
+
+    fun isSqlToyClass(className: @NlsSafe String?): Boolean {
+        return TARGET_TYPES.contains(className);
+    }
+
+    /**
+     * 是否是缓存翻译类
+     */
+    fun isTranslateClass(className: @NlsSafe String?): Boolean {
+        return "org.sagacity.sqltoy.config.model.Translate" == className
+    }
+
+    fun getPsiSqlToyClass(): Array<String> {
+        return TARGET_TYPES.toTypedArray()
+    }
+
+    fun findTranslateStatement(project: Project, translateCache: String): Array<PsiElement> {
+        val virtualFiles =
+            FilenameIndex.getAllFilesByExt(project, JavaFileType.DEFAULT_EXTENSION, GlobalSearchScope.projectScope(project))
+
+        val result: MutableList<PsiElement> = mutableListOf();
+        for (virtualFile in virtualFiles) {
+            val psiFile = PsiUtilCore.getPsiFile(project, virtualFile)
+            if(psiFile !is PsiJavaFile){
+                continue;
+            }
+
+            val psiLiterals = PsiTreeUtil.collectElementsOfType(psiFile, PsiLiteral::class.java)
+            for (psiLiteral in psiLiterals) {
+
+                if(psiLiteral.value.toString() != translateCache){
+                    continue;
+                }
+
+                if(!Patterns.translateMethodCallPattern.accepts(psiLiteral)){
+                    if(!Patterns.translateMethodCallPattern_2.accepts(psiLiteral)) {
+                        if (!Patterns.translateNewExpressionPattern.accepts(psiLiteral)) {
+                            continue;
+                        }
+                    }
+                }
+                result.add(psiLiteral);
+            }
+        }
+        return result.toTypedArray();
+    }
+
 }

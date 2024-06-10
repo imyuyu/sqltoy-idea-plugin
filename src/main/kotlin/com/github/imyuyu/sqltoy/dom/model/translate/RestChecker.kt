@@ -11,8 +11,8 @@ import com.intellij.util.xml.*
 interface RestChecker : Checker {
 
     @Required
-    @SubTag("url")
-    fun getUrl() : ValueElement
+    @Attribute("url")
+    fun getUrl() : GenericAttributeValue<String>
 
     @Attribute("username")
     fun getUsername() : GenericAttributeValue<String>

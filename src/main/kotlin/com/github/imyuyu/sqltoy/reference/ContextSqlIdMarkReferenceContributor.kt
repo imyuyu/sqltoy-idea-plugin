@@ -1,6 +1,7 @@
 package com.github.imyuyu.sqltoy.reference
 
 import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
+import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
 import com.github.imyuyu.sqltoy.util.JavaUtils
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.github.imyuyu.sqltoy.util.XmlUtil
@@ -64,7 +65,7 @@ class ContextSqlIdMarkReferenceContributor: PsiReferenceContributor() {
                 if (a || b) {
                     val project = element.getProject()
                     val searchScope = SearchUtil.getSearchScope(project, element)
-                    val sqlIdRecords = SQLIdIndexHolder.findRecordsByQualifiedId(value, project, searchScope)
+                    val sqlIdRecords = SQLIdIndexHolder.findRecordsByQualifiedId(SQLToyBeanIndexType.SQL_ID,value, project, searchScope)
 
                     val result = mutableListOf<PsiReference>()
 
