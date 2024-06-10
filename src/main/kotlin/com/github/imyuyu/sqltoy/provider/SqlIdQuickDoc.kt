@@ -28,27 +28,39 @@ class SqlIdQuickDoc : AbstractDocumentationProvider() {
     }
 
     override fun generateDoc(element: PsiElement?, originalElement: PsiElement?): String? {
-        if (element !is XmlAttributeValue) {
+        val project = element?.project
+        val file = element?.containingFile
+
+        if (element !is XmlAttributeValue && element !is XmlTag) {
             return null
         }
+
         if(!XmlUtil.isSqltoyXml(element)){
             return null
         }
 
-        val id = element.text.replace("\"", "");
+        val domManager = DomManager.getDomManager(project)
+        var sql:Sql? = null;
 
+        if(element is XmlAttributeValue){
+            sql = domManager
+                .getDomElement(PsiTreeUtil.getParentOfType(element, XmlTag::class.java)) as Sql
+        }else{
+            sql = domManager.getDomElement(element as XmlTag) as Sql;
+        }
+
+        val id = sql.getId().value!!;
         //var stringBuilder = StringBuilder()
         //DocumentationManagerUtil.createHyperlink(stringBuilder, element, element.toString(), "$id",true);
 
-        val sql = DomManager.getDomManager(element.project)
-            .getDomElement(PsiTreeUtil.getParentOfType(element, XmlTag::class.java)) as Sql
+
 
         return HtmlBuilder().append(
             HtmlChunk.div().setClass(DocumentationMarkup.CLASS_DEFINITION).children(HtmlChunk.tag("pre")
             .addText("SQL ID ")
             .child(HtmlChunk.link(DocumentationManagerProtocol.PSI_ELEMENT_PROTOCOL+PsiUtil.getName(element), id))
             .addText(" is defined in ")
-            .child(HtmlChunk.link("psi_element://"+ (PsiUtil.getVirtualFile(element)?.path ?: ""), element.containingFile.name)))
+            .child(HtmlChunk.link("psi_element://"+ (PsiUtil.getVirtualFile(element)?.path ?: ""), file!!.name)))
         )
             .append(HtmlChunk.div().setClass(DocumentationMarkup.CLASS_CONTENT).addRaw(sql.getSqlValue().getValue()!!
                 .replace("            ", "")
