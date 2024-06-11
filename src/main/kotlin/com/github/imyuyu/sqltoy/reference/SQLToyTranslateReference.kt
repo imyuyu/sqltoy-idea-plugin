@@ -11,7 +11,7 @@ import com.intellij.psi.search.GlobalSearchScope
 
 class SQLToyTranslateReference(element: PsiElement) :
     PsiReferenceBase<PsiElement>(
-        element, ElementManipulators.getValueTextRange(element)
+        element, ElementManipulators.getValueTextRange(element),true
     ), EmptyResolveMessageProvider, HighlightedReference {
 
     override fun resolve(): PsiElement? {
@@ -49,4 +49,7 @@ class SQLToyTranslateReference(element: PsiElement) :
         return "Cannot resolve translate '${value}'"
     }
 
+    override fun isHighlightedWhenSoft(): Boolean {
+        return true
+    }
 }
