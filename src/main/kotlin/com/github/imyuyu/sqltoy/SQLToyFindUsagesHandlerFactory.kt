@@ -13,7 +13,7 @@ class SQLToyFindUsagesHandlerFactory: FindUsagesHandlerFactory() {
 
     override fun canFindUsages(element: PsiElement): Boolean {
         val module = ModuleUtilCore.findModuleForPsiElement(element);
-        val containingFile: VirtualFile = element.containingFile.virtualFile
+        val containingFile: VirtualFile = element.containingFile?.virtualFile ?: return false
         return XmlUtil.isSqltoyXml(containingFile);
     }
 
