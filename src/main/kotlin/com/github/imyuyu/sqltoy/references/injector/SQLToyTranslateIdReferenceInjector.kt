@@ -1,7 +1,6 @@
 package com.github.imyuyu.sqltoy.references.injector
 
 import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
-import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
 import com.github.imyuyu.sqltoy.reference.PsiJavaInjectReference
 import com.github.imyuyu.sqltoy.reference.SQLToyTranslateReference
 import com.github.imyuyu.sqltoy.util.SearchUtil

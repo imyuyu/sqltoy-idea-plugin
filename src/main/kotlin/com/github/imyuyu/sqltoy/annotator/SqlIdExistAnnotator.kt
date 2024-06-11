@@ -1,23 +1,14 @@
 package com.github.imyuyu.sqltoy.annotator
 
-import com.github.imyuyu.sqltoy.service.EditorService
 import com.github.imyuyu.sqltoy.util.XmlUtil
 import com.intellij.codeInsight.daemon.impl.analysis.RemoveTagIntentionFix
-import com.intellij.codeInsight.daemon.impl.quickfix.DeleteElementFix
-import com.intellij.codeInsight.intention.IntentionAction
 import com.intellij.codeInspection.ProblemHighlightType
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
-import com.intellij.modcommand.ActionContext
-import com.intellij.modcommand.ModPsiUpdater
-import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.util.text.StringUtil
-import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiFile
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.search.PsiSearchHelper
 import com.intellij.psi.util.parentOfTypes
@@ -26,8 +17,6 @@ import com.intellij.psi.xml.XmlAttributeValue
 import com.intellij.psi.xml.XmlTag
 import com.intellij.refactoring.suggested.endOffset
 import com.intellij.refactoring.suggested.startOffset
-import com.intellij.util.IncorrectOperationException
-import org.jetbrains.annotations.Nls
 
 class SqlIdExistAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {

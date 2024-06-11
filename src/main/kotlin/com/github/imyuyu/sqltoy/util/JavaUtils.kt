@@ -1,11 +1,8 @@
 package com.github.imyuyu.sqltoy.util
 
-import ai.grazie.utils.toDistinctTypedArray
 import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.NlsSafe
-import com.intellij.patterns.PsiClassPattern
-import com.intellij.patterns.PsiJavaPatterns
 import com.intellij.psi.*
 import com.intellij.psi.search.FilenameIndex
 import com.intellij.psi.search.GlobalSearchScope

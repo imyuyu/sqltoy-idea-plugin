@@ -16,7 +16,7 @@ object SQLToyIndexKeyDescriptor : KeyDescriptor<Pair<SQLToyBeanIndexType, String
     }
 
     override fun read(`in`: DataInput): Pair<SQLToyBeanIndexType, String> {
-        val type = SQLToyBeanIndexType.entries[DataInputOutputUtil.readINT(`in`)]
+        val type = SQLToyBeanIndexType.get(DataInputOutputUtil.readINT(`in`))
         val value = IOUtil.readUTF(`in`)
         return Pair.create(type, value)
     }

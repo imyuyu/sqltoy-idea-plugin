@@ -12,7 +12,6 @@ import com.intellij.psi.PsiTarget
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.PsiUtil
 import com.intellij.psi.xml.XmlTag
-import com.intellij.testFramework.utils.vfs.getPsiFile
 import com.intellij.util.xml.DomElement
 import com.intellij.util.xml.DomManager
 import com.intellij.util.xml.DomTarget

@@ -6,7 +6,6 @@ import com.intellij.codeInsight.documentation.DocumentationManagerProtocol
 import com.intellij.codeInsight.documentation.DocumentationManagerUtil
 import com.intellij.lang.documentation.AbstractDocumentationProvider
 import com.intellij.lang.documentation.DocumentationMarkup
-import com.intellij.lang.documentation.DocumentationMarkup.DEFINITION_ELEMENT
 import com.intellij.openapi.util.text.HtmlBuilder
 import com.intellij.openapi.util.text.HtmlChunk
 import com.intellij.psi.PsiElement
@@ -56,13 +55,13 @@ class SqlIdQuickDoc : AbstractDocumentationProvider() {
 
 
         return HtmlBuilder().append(
-            HtmlChunk.div().setClass(DocumentationMarkup.CLASS_DEFINITION).children(HtmlChunk.tag("pre")
+            DocumentationMarkup.DEFINITION_ELEMENT.children(HtmlChunk.tag("pre")
             .addText("SQL ID ")
             .child(HtmlChunk.link(DocumentationManagerProtocol.PSI_ELEMENT_PROTOCOL+PsiUtil.getName(element), id))
             .addText(" is defined in ")
             .child(HtmlChunk.link("psi_element://"+ (PsiUtil.getVirtualFile(element)?.path ?: ""), file!!.name)))
         )
-            .append(HtmlChunk.div().setClass(DocumentationMarkup.CLASS_CONTENT).addRaw(sql.getSqlValue().getValue()!!
+            .append(DocumentationMarkup.CONTENT_ELEMENT.addRaw(sql.getSqlValue().getValue()!!
                 .replace("            ", "")
                 .replace(" ", HtmlChunk.nbsp().toString())
                 .replace("\n", HtmlChunk.br().toString()))).toString();

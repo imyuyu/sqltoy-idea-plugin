@@ -1,9 +1,10 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
 import com.github.imyuyu.sqltoy.dom.model.ValueElement
-import com.intellij.spring.model.converters.SpringBeanIdConverter
-import com.intellij.sql.dialects.SqlLanguageDialect
-import com.intellij.util.xml.*
+import com.intellij.util.xml.Attribute
+import com.intellij.util.xml.GenericAttributeValue
+import com.intellij.util.xml.Required
+import com.intellij.util.xml.SubTag
 import org.intellij.lang.annotations.Language
 
 /**
@@ -20,6 +21,6 @@ interface SqlTranslate : Translate {
 
     @Required
     @SubTag("sql")
-    @Language(SqlLanguageDialect.SQL_ID)
+    @Language("SQL")
     fun getSql() : ValueElement
 }
