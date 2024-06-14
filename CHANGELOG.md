@@ -4,7 +4,10 @@
 
 ## [Unreleased]
 
+## [0.5.0] - 2024-06-14
+
 ### Added
+
 - Support cache translation reference redirection
 - Added language injections: 'SQLToy SQL ID' and 'SQLToy TRANSLATE ID'
 - 支持`*-translate.xml`文件的缓存定义跳转至java代码`lightDao.getTranslateCache`、`new CacheMatchFilter().cacheName("dictKeyName")`、`new Translate("dictKeyName")`
@@ -16,6 +19,7 @@
 - 增加了`SQLToy SQL ID`、`SQLToy TRANSLATE ID`两个语言注入，可以在任意字符串位置将某个字符串注入为`sqlId`或`cacheName`，注入后效果一致
 
 ### Changed
+
 - Refactoring indexes while supporting SQLId and cache translation
 - 重构了文件索引以同时支持`sqlId`和缓存翻译
 - 优化部分代码匹配机制，提高性能及内存消耗
@@ -100,7 +104,8 @@
 - [java call jump xml definition](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)
 - `sql.xml` file use sqltoy icon
 
-[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.3...HEAD
+[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.3...v0.5.0
 [0.4.3]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.0...v0.4.1
