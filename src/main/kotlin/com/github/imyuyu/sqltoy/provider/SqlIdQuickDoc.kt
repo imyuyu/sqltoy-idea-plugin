@@ -1,9 +1,8 @@
 package com.github.imyuyu.sqltoy.provider
 
-import com.github.imyuyu.sqltoy.dom.model.Sql
+import com.github.imyuyu.sqltoy.dom.model.sql.Sql
 import com.github.imyuyu.sqltoy.util.XmlUtil
 import com.intellij.codeInsight.documentation.DocumentationManagerProtocol
-import com.intellij.codeInsight.documentation.DocumentationManagerUtil
 import com.intellij.lang.documentation.AbstractDocumentationProvider
 import com.intellij.lang.documentation.DocumentationMarkup
 import com.intellij.openapi.util.text.HtmlBuilder
@@ -39,7 +38,7 @@ class SqlIdQuickDoc : AbstractDocumentationProvider() {
         }
 
         val domManager = DomManager.getDomManager(project)
-        var sql:Sql? = null;
+        var sql: Sql? = null;
 
         if(element is XmlAttributeValue){
             sql = domManager

@@ -1,6 +1,5 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
-import com.github.imyuyu.sqltoy.dom.model.ValueElement
 import com.intellij.util.xml.*
 
 /**
@@ -8,7 +7,7 @@ import com.intellij.util.xml.*
  *
  * @author imyuyu
  */
-interface RestTranslate : Translate {
+interface RestTranslate : DomTranslateBean {
 
     @Required
     @Attribute("url")

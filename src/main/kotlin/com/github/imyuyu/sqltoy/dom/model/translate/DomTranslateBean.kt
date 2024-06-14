@@ -11,7 +11,7 @@ import com.intellij.util.xml.Required
  *
  * @author imyuyu
  */
-interface Translate : DomElement {
+interface DomTranslateBean : DomElement {
 
     @Required
     @NameValue

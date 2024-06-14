@@ -1,4 +1,4 @@
-package com.github.imyuyu.sqltoy.dom.model
+package com.github.imyuyu.sqltoy.dom.model.sql
 
 import com.github.imyuyu.sqltoy.dom.model.converters.SQLToyTranslateConverter
 import com.intellij.util.xml.*
@@ -6,6 +6,7 @@ import com.intellij.util.xml.*
 /**
  * The interface translate element.
  */
+@Stubbed
 interface TranslateConfig:DomElement{
 
     @Referencing(SQLToyTranslateConverter::class)
@@ -14,7 +15,7 @@ interface TranslateConfig:DomElement{
     fun getCache() : GenericAttributeValue<String>
 
     @Required
-    @Attribute("cache")
+    @Attribute("columns")
     fun getColumns():GenericAttributeValue<String>
 
     @Attribute("cache-type")

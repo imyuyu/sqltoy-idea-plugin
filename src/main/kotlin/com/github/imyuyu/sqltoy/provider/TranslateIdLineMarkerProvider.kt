@@ -1,7 +1,6 @@
 package com.github.imyuyu.sqltoy.provider
 
-import com.github.imyuyu.sqltoy.dom.model.Sql
-import com.github.imyuyu.sqltoy.dom.model.translate.Translate
+import com.github.imyuyu.sqltoy.dom.model.translate.DomTranslateBean
 import com.github.imyuyu.sqltoy.util.JavaUtils
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.project.Project
@@ -32,7 +31,7 @@ class TranslateIdLineMarkerProvider : SimpleLineMarkerProvider<XmlToken, PsiElem
 
         val domElement = DomManager.getDomManager(from.project).getDomElement(tag)
 
-        if(domElement !is Translate){
+        if(domElement !is DomTranslateBean){
             return Optional.empty();
         }
         if(domElement.getCache().value.isNullOrBlank()){

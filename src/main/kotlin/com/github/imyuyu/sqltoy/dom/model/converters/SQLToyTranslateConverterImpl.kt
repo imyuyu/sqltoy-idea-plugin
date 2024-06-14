@@ -1,7 +1,7 @@
 package com.github.imyuyu.sqltoy.dom.model.converters
 
-import com.github.imyuyu.sqltoy.dom.model.TranslateConfig
-import com.github.imyuyu.sqltoy.dom.model.translate.Checker
+import com.github.imyuyu.sqltoy.dom.model.sql.TranslateConfig
+import com.github.imyuyu.sqltoy.dom.model.translate.DomCheckerBean
 import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
 import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
 import com.github.imyuyu.sqltoy.ui.Icons
@@ -84,8 +84,8 @@ class SQLToyTranslateConverterImpl : SQLToyTranslateConverter() {
             )
         }
 
-        private fun getTranslateCheckerBean(): Checker? {
-            return myGenericDomValue?.getParentOfType(Checker::class.java, false)
+        private fun getTranslateCheckerBean(): DomCheckerBean? {
+            return myGenericDomValue?.getParentOfType(DomCheckerBean::class.java, false)
         }
 
         override fun getUnresolvedMessagePattern(): String {

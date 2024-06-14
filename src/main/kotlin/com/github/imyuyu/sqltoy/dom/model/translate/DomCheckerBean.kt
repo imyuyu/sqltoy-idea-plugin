@@ -1,6 +1,5 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
-import com.github.imyuyu.sqltoy.dom.model.ValueElement
 import com.github.imyuyu.sqltoy.dom.model.converters.SQLToyTranslateConverter
 import com.intellij.util.xml.Attribute
 import com.intellij.util.xml.DomElement
@@ -11,7 +10,7 @@ import com.intellij.util.xml.Required
 /**
  * Checker interface
  */
-interface Checker : DomElement {
+interface DomCheckerBean : DomElement {
 
     @Referencing(SQLToyTranslateConverter::class)
     @Required

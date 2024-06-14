@@ -1,14 +1,16 @@
-package com.github.imyuyu.sqltoy.dom.model
+package com.github.imyuyu.sqltoy.dom.model.sql
 
 import com.intellij.util.xml.Attribute
 import com.intellij.util.xml.DomElement
 import com.intellij.util.xml.GenericAttributeValue
+import com.intellij.util.xml.Stubbed
 
 /**
  * The interface secure-mask element.
  *
  * @author imyuyu
  */
+@Stubbed
 interface SecureMask: DomElement {
 
     @Attribute("columns")

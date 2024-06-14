@@ -1,4 +1,4 @@
-package com.github.imyuyu.sqltoy.dom.model
+package com.github.imyuyu.sqltoy.dom.model.sql
 
 import com.intellij.util.xml.*
 
@@ -7,6 +7,7 @@ import com.intellij.util.xml.*
  *
  * @author imyuyu
  */
+@Stubbed
 interface PageOptimize: DomElement {
 
     @Attribute("alive-max")

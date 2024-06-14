@@ -56,7 +56,7 @@
                                   language="XML"/>-->
 
         <!-- sql.xml图标改为sqltoy -->
-        <iconProvider id="sqltoy.XmlIconProvider" implementation="com.github.imyuyu.sqltoy.provider.XmlIconProvider" />
+        <!--<iconProvider id="sqltoy.XmlIconProvider" implementation="com.github.imyuyu.sqltoy.provider.XmlIconProvider" />-->
 
         <!--<localInspection language="XML" shortName="SQLToyXmlInspection"
                          enabledByDefault="true"
@@ -108,11 +108,15 @@
         
         <dom.fileMetaData
                 id="sqltoy.SqlDescription"
-                implementation="com.github.imyuyu.sqltoy.dom.SQLToyDomFileDescription" rootTagName="sqltoy" />
+                implementation="com.github.imyuyu.sqltoy.dom.SQLToyDomFileDescription" rootTagName="sqltoy"
+                stubVersion="1"
+        />
 
         <dom.fileMetaData
                 id="sqltoy.TranslateDescription"
-                implementation="com.github.imyuyu.sqltoy.dom.SQLToyTranslateDomFileDescription" rootTagName="sagacity" />
+                implementation="com.github.imyuyu.sqltoy.dom.SQLToyTranslateDomFileDescription" rootTagName="sagacity"
+                stubVersion="1"
+        />
 
         <dom.converter interfaceClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToySqlIdConverter"
                        implementationClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToySqlIdConverterImpl"/>

@@ -1,8 +1,7 @@
 package com.github.imyuyu.sqltoy.indexer
 
-import com.github.imyuyu.sqltoy.dom.model.SQLToy
-import com.github.imyuyu.sqltoy.dom.model.Sql
-import com.github.imyuyu.sqltoy.dom.model.translate.Translate
+import com.github.imyuyu.sqltoy.dom.model.sql.Sql
+import com.github.imyuyu.sqltoy.dom.model.translate.DomTranslateBean
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Pair
 import com.intellij.openapi.vfs.VirtualFile
@@ -64,7 +63,7 @@ data class SQLIdRecord(
             )
         )
 
-        if (domElement == null || (id.first == SQLToyBeanIndexType.SQL_ID && domElement !is Sql) || (id.first == SQLToyBeanIndexType.TRANSLATE_ID && domElement !is Translate)) {
+        if (domElement == null || (id.first == SQLToyBeanIndexType.SQL_ID && domElement !is Sql) || (id.first == SQLToyBeanIndexType.TRANSLATE_ID && domElement !is DomTranslateBean)) {
             return emptyList();
         }
 

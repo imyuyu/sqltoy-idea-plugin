@@ -1,7 +1,9 @@
-package com.github.imyuyu.sqltoy.dom.model
+package com.github.imyuyu.sqltoy.dom.model.sql
 
+import com.github.imyuyu.sqltoy.constants.SQLToyConstants
 import com.intellij.util.xml.DomElement
 import com.intellij.util.xml.Namespace
+import com.intellij.util.xml.Stubbed
 import com.intellij.util.xml.SubTagList
 import org.jetbrains.annotations.NotNull
 
@@ -10,7 +12,8 @@ import org.jetbrains.annotations.NotNull
  *
  * @author imyuyu
  */
-@Namespace("SQLToyXml")
+@Stubbed
+@Namespace(SQLToyConstants.SQL_NAMESPACE_KEY)
 interface SQLToy : DomElement {
 
     /**
@@ -20,6 +23,7 @@ interface SQLToy : DomElement {
      */
     @NotNull
     @SubTagList("sql")
+    @Stubbed
     fun getSqlList(): List<Sql>
 
 }

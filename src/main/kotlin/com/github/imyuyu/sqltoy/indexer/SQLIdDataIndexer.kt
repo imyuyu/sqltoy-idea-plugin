@@ -1,14 +1,10 @@
 package com.github.imyuyu.sqltoy.indexer
 
-import com.github.imyuyu.sqltoy.dom.model.SQLToy
+import com.github.imyuyu.sqltoy.dom.model.sql.SQLToy
 import com.github.imyuyu.sqltoy.dom.model.translate.SQLToyTranslate
 import com.github.imyuyu.sqltoy.util.XmlUtil
-import com.intellij.openapi.module.ModuleUtil
 import com.intellij.openapi.util.Pair
-import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.xml.XmlAttribute
 import com.intellij.psi.xml.XmlFile
-import com.intellij.psi.xml.XmlTag
 import com.intellij.util.indexing.DataIndexer
 import com.intellij.util.indexing.FileContent
 import com.intellij.util.xml.DomManager

@@ -1,15 +1,13 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
-import com.github.imyuyu.sqltoy.dom.model.ValueElement
 import com.intellij.util.xml.*
-import java.lang.reflect.Method
 
 /**
  * The interface service-checker element.
  *
  * @author imyuyu
  */
-interface ServiceChecker : Checker {
+interface ServiceChecker : DomCheckerBean {
 
     @Required
     @Attribute("service")

@@ -1,6 +1,6 @@
 package com.github.imyuyu.sqltoy.util
 
-import com.github.imyuyu.sqltoy.dom.model.SQLToy
+import com.github.imyuyu.sqltoy.dom.model.sql.SQLToy
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.openapi.fileTypes.FileTypeRegistry
 import com.intellij.openapi.project.Project

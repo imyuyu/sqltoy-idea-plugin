@@ -1,6 +1,6 @@
 package com.github.imyuyu.sqltoy.provider
 
-import com.github.imyuyu.sqltoy.dom.model.Sql
+import com.github.imyuyu.sqltoy.dom.model.sql.Sql
 import com.github.imyuyu.sqltoy.dom.model.ValueElement
 import com.intellij.codeInsight.daemon.LineMarkerInfo
 import com.intellij.codeInsight.daemon.LineMarkerProviderDescriptor
@@ -35,7 +35,8 @@ class RunSqlLineMarkerProvider : LineMarkerProviderDescriptor() {
         if(element is XmlTag
             && element.containingFile.name.endsWith("sql.xml")
             && element.name == "value"
-            && DomManager.getDomManager(element.project).getDomElement(element)?.parent is Sql){
+            && DomManager.getDomManager(element.project).getDomElement(element)?.parent is Sql
+        ){
             return LineMarkerInfo(
                 element.child<XmlToken>()!!,
                 element.textRange,

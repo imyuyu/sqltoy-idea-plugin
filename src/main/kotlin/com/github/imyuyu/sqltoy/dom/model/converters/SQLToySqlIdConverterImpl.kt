@@ -1,13 +1,12 @@
 package com.github.imyuyu.sqltoy.dom.model.converters
 
-import com.github.imyuyu.sqltoy.dom.model.Sql
+import com.github.imyuyu.sqltoy.dom.model.sql.Sql
 import com.intellij.pom.PomTargetPsiElement
 import com.intellij.pom.references.PomService
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference
 import com.intellij.psi.PsiReferenceBase
 import com.intellij.psi.ResolvingHint
-import com.intellij.spring.model.BeanService
 import com.intellij.util.ReflectionUtil
 import com.intellij.util.xml.ConvertContext
 import com.intellij.util.xml.DomTarget
