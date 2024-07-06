@@ -2,11 +2,7 @@ package com.github.imyuyu.sqltoy.dom.model.translate
 
 import com.github.imyuyu.sqltoy.dom.model.ValueElement
 import com.intellij.spring.model.converters.SpringBeanResolveConverter
-import com.intellij.util.xml.Attribute
-import com.intellij.util.xml.Convert
-import com.intellij.util.xml.GenericAttributeValue
-import com.intellij.util.xml.Required
-import com.intellij.util.xml.SubTag
+import com.intellij.util.xml.*
 import org.intellij.lang.annotations.Language
 
 /**
@@ -14,14 +10,16 @@ import org.intellij.lang.annotations.Language
  *
  * @author imyuyu
  */
+@Stubbed
 interface SqlTranslate : DomTranslateBean {
+    @Stubbed
 
     @Required
     @Attribute("datasource")
     fun getDatasource() : GenericAttributeValue<String>
 
+    @Stubbed
     @Required
     @SubTag("sql")
-    @Language("SQL")
     fun getSql() : ValueElement
 }

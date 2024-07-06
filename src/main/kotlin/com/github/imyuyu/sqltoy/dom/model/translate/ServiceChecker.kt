@@ -7,12 +7,15 @@ import com.intellij.util.xml.*
  *
  * @author imyuyu
  */
+@Stubbed
 interface ServiceChecker : DomCheckerBean {
 
+    @Stubbed
     @Required
     @Attribute("service")
     fun getService() : GenericAttributeValue<String>
 
+    @Stubbed
     @Required
     @Attribute("method")
     fun getMethod() : GenericAttributeValue<String>

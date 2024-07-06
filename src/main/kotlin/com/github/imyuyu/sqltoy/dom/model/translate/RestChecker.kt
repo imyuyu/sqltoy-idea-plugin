@@ -7,15 +7,19 @@ import com.intellij.util.xml.*
  *
  * @author imyuyu
  */
+@Stubbed
 interface RestChecker : DomCheckerBean {
 
+    @Stubbed
     @Required
     @Attribute("url")
     fun getUrl() : GenericAttributeValue<String>
 
+    @Stubbed
     @Attribute("username")
     fun getUsername() : GenericAttributeValue<String>
 
+    @Stubbed
     @Attribute("password")
     fun getPassword() : GenericAttributeValue<String>
 }

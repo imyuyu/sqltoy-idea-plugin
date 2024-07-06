@@ -12,14 +12,16 @@ import org.intellij.lang.annotations.Language
 @Stubbed
 interface SqlIncrementChecker : DomCheckerBean {
 
+    @Stubbed
     @Required
     @SubTag("sql")
-    @Language("SQL")
     fun getSql() : ValueElement
 
+    @Stubbed
     @Attribute("datasource")
     fun getDatasource() : GenericAttributeValue<String>
 
+    @Stubbed
     @Attribute("has-inside-group")
     fun getHasInsideGroup() : GenericAttributeValue<Boolean>
 }

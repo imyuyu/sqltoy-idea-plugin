@@ -1,18 +1,16 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
-import com.intellij.util.xml.Attribute
-import com.intellij.util.xml.DomElement
-import com.intellij.util.xml.GenericAttributeValue
-import com.intellij.util.xml.NameValue
-import com.intellij.util.xml.Required
+import com.intellij.util.xml.*
 
 /**
  * The interface sql-translate element.
  *
  * @author imyuyu
  */
+@Stubbed
 interface DomTranslateBean : DomElement {
 
+    @Stubbed
     @Required
     @NameValue
     @Attribute("cache")

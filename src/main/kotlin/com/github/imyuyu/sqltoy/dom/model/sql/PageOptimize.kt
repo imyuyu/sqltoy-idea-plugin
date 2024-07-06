@@ -11,9 +11,11 @@ import com.intellij.util.xml.*
 interface PageOptimize: DomElement {
 
     @Attribute("alive-max")
+    @Stubbed
     fun getAliveMax(): GenericAttributeValue<Int>
 
     @Attribute("alive-seconds")
+    @Stubbed
     fun getAliveSeconds(): GenericAttributeValue<Int>
 
 }

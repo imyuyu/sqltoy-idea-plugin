@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull
  *
  * @author imyuyu
  */
+@Stubbed
 interface Sql : DomElement {
 
     /**
@@ -19,29 +20,32 @@ interface Sql : DomElement {
      * @return the id
      */
     @NotNull
-    @Referencing(value = SQLToySqlIdConverter::class, soft = true)
-    @Required(identifier = true)
+    //@Referencing(value = SQLToySqlIdConverter::class, soft = true)
+    @Required
     @NameValue
     @Attribute("id")
     @Stubbed
     fun getId(): GenericAttributeValue<String>
 
     @Attribute("type")
+    @Stubbed
     fun getType(): GenericAttributeValue<String>
 
     @Attribute("blank-to-null")
+    @Stubbed
     fun getBlankToNull(): GenericAttributeValue<Boolean>
 
     @Attribute("debug")
+    @Stubbed
     fun getDebug(): GenericAttributeValue<Boolean>
 
     @Required
     @NotNull
     @SubTag("value")
-    @Language("SQL")
+    @Stubbed
     fun getSqlValue(): ValueElement
 
-    @Language("SQL")
+    @Stubbed
     @SubTag("count-sql")
     fun getCountSql(): ValueElement
 

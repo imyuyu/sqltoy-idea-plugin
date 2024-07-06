@@ -7,8 +7,10 @@ import com.intellij.util.xml.*
  *
  * @author imyuyu
  */
+@Stubbed
 interface RestTranslate : DomTranslateBean {
 
+    @Stubbed
     @Required
     @Attribute("url")
     fun getUrl() : GenericAttributeValue<String>
