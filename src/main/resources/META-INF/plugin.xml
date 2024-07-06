@@ -12,6 +12,10 @@
 
     <resource-bundle>messages.Message</resource-bundle>
 
+    <content>
+        <module name="intellij.sqltoy.maven" />
+    </content>
+
     <extensions defaultExtensionNs="com.intellij">
 
         <facetType implementation="com.github.imyuyu.sqltoy.facet.SQLToyFacetType"/>

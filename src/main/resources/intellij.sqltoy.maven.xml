@@ -1,0 +1,8 @@
+<idea-plugin package="com.github.imyuyu.sqltoy.facet.importer.maven">
+  <dependencies>
+    <plugin id="org.jetbrains.idea.maven"/>
+  </dependencies>
+  <extensions defaultExtensionNs="org.jetbrains.idea.maven">
+    <importer implementation="com.github.imyuyu.sqltoy.facet.importer.maven.SQLToyFacetImporter"/>
+  </extensions>
+</idea-plugin>
