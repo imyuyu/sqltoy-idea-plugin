@@ -75,6 +75,14 @@
                          hasStaticDescription="true"
                          implementationClass="com.github.imyuyu.sqltoy.inspection.SQLToyXmlInspection"/>
 
+        <localInspection language="XML" shortName="SQLToyTranslateInspection"
+                         enabledByDefault="true"
+                         id="sqltoy.SQLToyTranslateInspection"
+                         displayName="SQLToy translate inspection"
+                         groupName="SQLToy"
+                         hasStaticDescription="true"
+                         implementationClass="com.github.imyuyu.sqltoy.inspection.SQLToyTranslateInspection"/>
+
         <annotator
                 language="XML"
                 implementationClass="com.github.imyuyu.sqltoy.annotator.SqlIdExistAnnotator"/>
@@ -115,7 +123,7 @@
         <dom.fileMetaData
                 id="sqltoy.TranslateDescription"
                 implementation="com.github.imyuyu.sqltoy.dom.SQLToyTranslateDomFileDescription" rootTagName="sagacity"
-                stubVersion="1"
+                stubVersion="3"
         />
 
         <dom.converter interfaceClass="com.github.imyuyu.sqltoy.dom.model.converters.SQLToySqlIdConverter"
@@ -129,6 +137,8 @@
                 order="first, before dom"
                 implementationClass="com.github.imyuyu.sqltoy.provider.TranslateCheckerCompletionContributor"
         />
+
+        <dependencySupport kind="java" coordinate="com.sagframe:sagacity-sqltoy" displayName="SQLToy"/>
     </extensions>
     
     <actions>
