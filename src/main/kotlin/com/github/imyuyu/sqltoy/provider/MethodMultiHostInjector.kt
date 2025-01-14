@@ -2,6 +2,7 @@ package com.github.imyuyu.sqltoy.provider
 
 import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
 import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
+import com.github.imyuyu.sqltoy.util.Patterns
 import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.intellij.lang.injection.MultiHostInjector
 import com.intellij.lang.injection.MultiHostRegistrar
@@ -57,25 +58,16 @@ class MethodMultiHostInjector : MultiHostInjector {
             return false;
         }
 
-        // 获取父级的PsiExpressionList
-        val expressionList = PsiTreeUtil.getParentOfType<PsiExpressionList>(
-            element, PsiExpressionList::class.java
-        ) ?: return false;
+        if (Patterns.queryExecutorNewExpressionPattern.accepts(element)) {
+            return true;
+        }
 
         // 获取父级的方法调用表达式
         val methodCallExpression = PsiTreeUtil.getParentOfType(
-            expressionList, PsiMethodCallExpression::class.java
-        )
+            element, PsiMethodCallExpression::class.java
+        ) ?: return false;
 
-        if (methodCallExpression != null) {
-            return checkMethodCallExpression(methodCallExpression, sqlId, element);
-        }
-
-        val newExpression = PsiTreeUtil.getParentOfType(
-            expressionList, PsiNewExpression::class.java
-        ) ?: return false
-
-        return checkNewExpression(newExpression, sqlId, element)
+        return checkMethodCallExpression(methodCallExpression, sqlId, element);
     }
 
     override fun elementsToInjectIn(): List<Class<out PsiElement>?> {
@@ -94,34 +86,23 @@ class MethodMultiHostInjector : MultiHostInjector {
         val containingClass = method.containingClass!!
 
         if ((containingClass.qualifiedName == "org.sagacity.sqltoy.dao.LightDao" || containingClass.qualifiedName == "org.sagacity.sqltoy.dao.SqlToyLazyDao")
-            && methodName.startsWith("find") && !SQLIdIndexHolder.existsSqlId(
-                SQLToyBeanIndexType.SQL_ID,
-                sqlId,
-                SearchUtil.getSearchScope(element.project, element)
-            )
+            && (methodName.startsWith("find") ||
+                    methodName.startsWith("batch") ||
+                    methodName == "getValue" ||
+                    methodName == "getCount" ||
+                    methodName == "loadBySql" || // sqltoylazydao
+                    methodName == "getRandomResult" || // sqltoylazydao
+                    methodName == "getSingleValue" || // sqltoylazydao
+                    methodName.startsWith("execute")
+                    )
         ) {
             return true
         }
 
-        return false;
-    }
-
-    private fun checkNewExpression(
-        newExpression: PsiNewExpression,
-        sqlId: String,
-        element: PsiElement
-    ): Boolean {
-        // 获取new表达式的解析结果
-        val newExpressionClass = newExpression.resolveConstructor()?.containingClass
-        if (newExpressionClass != null && newExpressionClass.qualifiedName == "org.sagacity.sqltoy.model.QueryExecutor" &&
-            !SQLIdIndexHolder.existsSqlId(
-                SQLToyBeanIndexType.SQL_ID,
-                sqlId,
-                SearchUtil.getSearchScope(element.project, element)
-            )) {
-            return true
+        if (containingClass.qualifiedName == "org.sagacity.sqltoy.model.QueryExecutor" && methodName == "countSql" ) {
+            return true;
         }
 
-        return false
+        return false;
     }
 }

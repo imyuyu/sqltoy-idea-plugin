@@ -23,5 +23,8 @@ class Patterns {
         val translateNewExpressionPattern = PsiJavaPatterns.psiLiteral()
             .withSuperParent(2, PsiJavaPatterns.psiNewExpression("org.sagacity.sqltoy.config.model.Translate"));
 
+        // 是否是QueryExecutor类的构造函数
+        val queryExecutorNewExpressionPattern = PsiJavaPatterns.psiLiteral()
+            .withSuperParent(2, PsiJavaPatterns.psiNewExpression("org.sagacity.sqltoy.model.QueryExecutor"));
     }
 }

@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+### Added
+- optimized language injection
+- 给`lightDao`、`SqlToyLazyDao`相关方法增加语言注入，在检测到是sql时会注入为sql, 主要包括
+  - `batch*` 批处理相关函数
+  - `getValue` 主要是在`SqlToyLazyDao`
+  - `getCount` 在`lightDao`中
+  - `loadBySql` 
+  - `getRandomResult`
+  - `getSingleValue`  
+  -  `execute*` 执行sql相关的函数
+- 优化语言注入性能
+
 ## [0.5.0] - 2024-06-17
 
 ### Added
