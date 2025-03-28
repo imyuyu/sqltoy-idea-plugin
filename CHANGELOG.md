@@ -4,7 +4,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 修复社区版本出现错误堆栈的问题
+
+## [0.5.1] - 2025-03-28
+
 ### Added
+
 - optimized language injection
 - 给`lightDao`、`SqlToyLazyDao`相关方法增加语言注入，在检测到是sql时会注入为sql, 主要包括
   - `batch*` 批处理相关函数
@@ -116,7 +123,8 @@
 - [java call jump xml definition](https://github.com/imyuyu/sqltoy-idea-plugin/issues/4)
 - `sql.xml` file use sqltoy icon
 
-[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.3...v0.5.0
 [0.4.3]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...v0.4.2
