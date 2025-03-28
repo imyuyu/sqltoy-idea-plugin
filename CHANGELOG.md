@@ -4,11 +4,13 @@
 
 ## [Unreleased]
 
+## [0.5.2] - 2025-03-28
+
 ### Changed
 
 - 修复社区版本出现错误堆栈的问题
 
-## [0.5.1] - 2025-03-28
+## [0.5.1] - 2025-01-14
 
 ### Added
 
@@ -124,7 +126,8 @@
 - `sql.xml` file use sqltoy icon
 
 [Unreleased]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.2...HEAD
-[0.5.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.0...v0.5.1
+[0.5.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.1...v0.5.2
+[0.5.1]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.3...v0.5.0
 [0.4.3]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/imyuyu/sqltoy-idea-plugin/compare/v0.4.1...v0.4.2
