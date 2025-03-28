@@ -8,4 +8,10 @@
             <add-to-group group-id="DatabaseViewPopupMenu" anchor="first"/>
         </action>
     </actions>-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- run sql -->
+        <codeInsight.lineMarkerProvider id="sqltoy.RunSqlLineMarkerProvider" language="XML"
+                                        implementationClass="com.github.imyuyu.sqltoy.provider.RunSqlLineMarkerProvider"/>
+    </extensions>
 </idea-plugin>
