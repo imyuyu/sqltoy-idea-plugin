@@ -13,5 +13,7 @@
         <!-- run sql -->
         <codeInsight.lineMarkerProvider id="sqltoy.RunSqlLineMarkerProvider" language="XML"
                                         implementationClass="com.github.imyuyu.sqltoy.provider.RunSqlLineMarkerProvider"/>
+
+        <multiHostInjector implementation="com.github.imyuyu.sqltoy.provider.MethodMultiHostInjector" />
     </extensions>
 </idea-plugin>

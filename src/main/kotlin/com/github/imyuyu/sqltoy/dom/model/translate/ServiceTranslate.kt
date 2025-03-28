@@ -1,6 +1,5 @@
 package com.github.imyuyu.sqltoy.dom.model.translate
 
-import com.intellij.spring.model.converters.SpringBeanIdConverter
 import com.intellij.util.xml.*
 
 /**
@@ -14,7 +13,6 @@ interface ServiceTranslate : DomTranslateBean {
     @Stubbed
     @Required
     @Attribute("service")
-    @Referencing(value = SpringBeanIdConverter::class, soft = true)
     fun getService() : GenericAttributeValue<String>
 
     @Stubbed

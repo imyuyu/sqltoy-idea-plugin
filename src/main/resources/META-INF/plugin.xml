@@ -106,8 +106,6 @@
         
         <findUsagesHandlerFactory implementation="com.github.imyuyu.sqltoy.SQLToyFindUsagesHandlerFactory" />
 
-        <multiHostInjector implementation="com.github.imyuyu.sqltoy.provider.MethodMultiHostInjector" />
-
         <lang.documentationProvider language="JAVA"
                                     implementationClass="com.github.imyuyu.sqltoy.provider.SqlIdQuickDoc"
                                     id="sqltoyXml"

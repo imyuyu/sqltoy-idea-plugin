@@ -1,16 +1,14 @@
 package com.github.imyuyu.sqltoy.provider
 
-import com.github.imyuyu.sqltoy.indexer.SQLIdIndexHolder
-import com.github.imyuyu.sqltoy.indexer.SQLToyBeanIndexType
 import com.github.imyuyu.sqltoy.util.Patterns
-import com.github.imyuyu.sqltoy.util.SearchUtil
 import com.intellij.lang.injection.MultiHostInjector
 import com.intellij.lang.injection.MultiHostRegistrar
-import com.intellij.lang.java.JavaLanguage
-import com.intellij.openapi.fileTypes.PlainTextLanguage
 import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.util.text.StringUtil
-import com.intellij.psi.*
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiLanguageInjectionHost
+import com.intellij.psi.PsiLiteralExpression
+import com.intellij.psi.PsiMethodCallExpression
 import com.intellij.psi.impl.source.tree.java.PsiLiteralExpressionImpl
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.sql.psi.SqlLanguage
