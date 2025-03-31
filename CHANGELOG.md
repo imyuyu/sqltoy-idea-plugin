@@ -6,8 +6,13 @@
 
 ## [0.5.2] - 2025-03-28
 
+### Fixed
+- Fix the stack overflow issue caused by the use of the "permits" keyword in the code.
+- 修复代码中使用permits关键字导致的堆栈溢出问题
+
 ### Changed
 
+- Fix the community version error stack problem [#58]
 - 修复社区版本出现错误堆栈的问题
 
 ## [0.5.1] - 2025-01-14

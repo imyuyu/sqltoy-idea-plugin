@@ -27,8 +27,6 @@ object SearchUtil {
     }
 
     fun getExtendsClassFields(psiClass: PsiClass): List<PsiField> {
-
-        println("psiClasses = " + psiClass.qualifiedName)
         val psiFields: MutableList<PsiField> = ArrayList()
         val childrenOfAnyType: List<PsiReferenceList> = ArrayList(
             PsiTreeUtil.getChildrenOfAnyType(
